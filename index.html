@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Loja Futebol Top - Versão Completa com Login</title>
+<title>Loja Futebol Top - Completa com Login Funcional</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
@@ -273,7 +273,7 @@ button:hover {
   transform: scale(1.02);
 }
 
-/* Carrinho com animação e estilo */
+/* Carrinho estilo */
 #cart-items {
   margin-top: 20px;
 }
@@ -339,7 +339,7 @@ button:hover {
   transform: scale(1.02);
 }
 
-/* Rodapé estilizado e responsivo */
+/* Rodapé estilizado */
 footer {
   background-color: #222;
   color: #fff;
@@ -355,7 +355,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Responsividade avançada */
+/* Responsividade */
 @media(max-width: 768px){
   header {
     flex-direction: column;
@@ -374,7 +374,7 @@ footer a:hover {
 </head>
 <body>
 
-<!-- Cabeçalho com navegação avançada -->
+<!-- Cabeçalho -->
 <header>
   <h1>Loja Futebol Top</h1>
   <nav>
@@ -412,7 +412,7 @@ footer a:hover {
   </div>
 </div>
 
-<!-- Seção Produtos com filtros dinâmicos -->
+<!-- Seção Produtos -->
 <section id="products">
   <h2>Produtos de Futebol</h2>
   <div class="filters">
@@ -454,7 +454,7 @@ footer a:hover {
   <p>&copy; 2024 Loja Futebol Top. Todos os direitos reservados.</p>
 </footer>
 
-<!-- Scripts com funcionalidades avançadas e login -->
+<!-- Scripts -->
 <script>
   // Dados dos produtos
   const produtos = [
@@ -528,55 +528,44 @@ footer a:hover {
   filtroMarca.addEventListener('change', mostrarProdutos);
   buscaTexto.addEventListener('input', mostrarProdutos);
 
-  // Evento ao carregar
+  // Verifica login ao carregar
   window.onload = () => {
     verificarLogin();
     mostrarProdutos();
   };
 
-  // Autenticação
+  // Funções de login/logout
   function verificarLogin() {
     const usuario = localStorage.getItem('user');
     if (usuario) {
-      btnLogin.style.display = 'none';
-      btnLogout.style.display = 'inline-block';
+      document.querySelector('#auth-section').innerHTML = `
+        <span style="color:#fff; font-weight:600;">Olá, ${usuario}!</span>
+        <button id="logoutBtn">Logout</button>
+      `;
+      document.getElementById('logoutBtn').onclick = () => {
+        localStorage.removeItem('user');
+        verificarLogin();
+      };
     } else {
-      btnLogin.style.display = 'inline-block';
-      btnLogout.style.display = 'none';
+      document.querySelector('#auth-section').innerHTML = `
+        <button id="loginBtn">Login</button>
+      `;
+      document.getElementById('loginBtn').onclick = () => {
+        mostrarModalAuth(true);
+      };
     }
   }
 
   // Abrir modal login
-  document.getElementById('loginBtn').onclick = () => {
-    mostrarModalAuth(true);
-  };
-
-  // Logout
-  document.getElementById('logoutBtn').onclick = () => {
-    localStorage.removeItem('user');
-    verificarLogin();
-  };
-
-  // Fechar modal
-  document.getElementById('auth-close').onclick = () => {
-    esconderModalAuth();
-  };
-
-  // Trocar modo
-  document.getElementById('switchAuth').onclick = (e) => {
-    e.preventDefault();
-    alternarModoAuth();
-  };
-
-  // Mostrar modal
 function mostrarModalAuth(isLogin) {
   modoAuth = isLogin;
   document.getElementById('auth-title').textContent = isLogin ? 'Login' : 'Registrar-se';
   document.getElementById('auth-username').value = '';
   document.getElementById('auth-password').value = '';
 
-  // Atualizar texto do link
-  document.querySelector('#auth-form p').innerHTML = isLogin
+  // Atualizar o link de troca
+  const pTexto = document.querySelector('#auth-form p');
+  pTexto.innerHTML = isLogin
     ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a>'
     : 'Já possui conta? <a href="#" id="switchAuth">Entrar</a>';
 
@@ -590,14 +579,10 @@ function mostrarModalAuth(isLogin) {
     ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a>'
     : 'Já possui conta? <a href="#" id="switchAuth">Entrar</a>';
 
-  document.querySelector('#auth-form p').innerHTML = isLogin
-    ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a>'
-    : 'Já possui conta? <a href="#" id="switchAuth">Entrar</a>';
-
   modalAuth.style.display = 'flex';
 }
 
-// Esconder modal
+// Fechar modal
 function esconderModalAuth() {
   modalAuth.style.display = 'none';
 }
@@ -689,7 +674,7 @@ document.getElementById('checkoutBtn').onclick = () => {
   mostrarCarrinho();
 }
 
-// Remover item
+// Remover item do carrinho
 function removerDoCarrinho(indice) {
   carrinho.splice(indice, 1);
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
