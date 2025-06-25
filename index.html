@@ -3,118 +3,217 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Loja Esportiva - Beatriz</title>
+  <title>Loja Desportiva | Beatriz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #121212;
-      color: #fff;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
     }
 
     header {
-      background-color: #1f1f1f;
-      padding: 20px;
-      text-align: center;
+      background-color: #111;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
       font-size: 24px;
-      font-weight: bold;
       color: #00ff88;
     }
 
-    .container {
-      padding: 30px 20px;
-      max-width: 1100px;
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 1px 1px 5px #000;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero a {
+      background-color: #00ff88;
+      padding: 15px 30px;
+      border-radius: 8px;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
       margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
     }
 
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      gap: 30px;
     }
 
-    .product {
-      background-color: #1c1c1c;
+    .card {
+      background: white;
       border-radius: 10px;
-      padding: 15px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       text-align: center;
-      transition: 0.3s;
     }
 
-    .product:hover {
-      transform: scale(1.03);
-      background-color: #222;
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
     }
 
-    .product img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
+    .card h3 {
+      margin: 15px 0 5px;
     }
 
-    .product h3 {
-      margin: 10px 0 5px;
-    }
-
-    .price {
-      color: #00ff88;
-      font-weight: bold;
+    .card p {
       margin: 5px 0 15px;
     }
 
-    .btn {
+    .card .price {
+      color: #00bb55;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .card a {
       display: inline-block;
-      padding: 10px 20px;
+      margin-bottom: 15px;
       background: #00ff88;
       color: #000;
-      border-radius: 5px;
+      padding: 10px 20px;
       text-decoration: none;
+      border-radius: 5px;
       font-weight: bold;
     }
 
-    footer {
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
       text-align: center;
-      padding: 20px;
-      background-color: #1f1f1f;
-      margin-top: 40px;
-      color: #888;
+    }
+
+    .benefit {
+      flex: 1 1 200px;
+      background: #111;
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: #111;
+      color: #aaa;
+      padding: 30px;
+      text-align: center;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <header>🔥 Loja de Roupa Desportiva 🔥</header>
+  <header>
+    <h1>Beatriz Sports</h1>
+    <nav>
+      <a href="#produtos">Produtos</a>
+      <a href="#vantagens">Vantagens</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
 
-  <div class="container">
-    <h2 style="text-align:center;">Os melhores produtos para o teu jogo ⚽</h2>
+  <section class="hero">
+    <div>
+      <h2>Estilo e Performance em Campo</h2>
+      <p>Descobre as melhores camisolas, chuteiras e fatos de treino para dominar o jogo.</p>
+      <a href="#produtos">Ver Produtos</a>
+    </div>
+  </section>
+
+  <section class="section" id="produtos">
+    <h2>Produtos em Destaque</h2>
     <div class="products">
 
-      <div class="product">
-        <img src="https://via.placeholder.com/300x200?text=Camisola+de+Futebol" alt="Camisola de Futebol">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Camisola+de+Futebol" alt="Camisola">
         <h3>Camisola de Futebol</h3>
         <p class="price">€24,90</p>
-        <a class="btn" href="https://wa.me/351912345678" target="_blank">Comprar via WhatsApp</a>
+        <a href="https://wa.me/351912345678" target="_blank">Comprar</a>
       </div>
 
-      <div class="product">
+      <div class="card">
         <img src="https://via.placeholder.com/300x200?text=Chuteiras" alt="Chuteiras">
         <h3>Chuteiras Profissionais</h3>
         <p class="price">€49,90</p>
-        <a class="btn" href="https://wa.me/351912345678" target="_blank">Comprar via WhatsApp</a>
+        <a href="https://wa.me/351912345678" target="_blank">Comprar</a>
       </div>
 
-      <div class="product">
+      <div class="card">
         <img src="https://via.placeholder.com/300x200?text=Fato+de+Treino" alt="Fato de Treino">
-        <h3>Fato de Treino Premium</h3>
+        <h3>Fato de Treino</h3>
         <p class="price">€39,90</p>
-        <a class="btn" href="https://wa.me/351912345678" target="_blank">Comprar via WhatsApp</a>
+        <a href="https://wa.me/351912345678" target="_blank">Comprar</a>
       </div>
 
     </div>
-  </div>
+  </section>
 
-  <footer>
-    &copy; 2025 Beatriz Sports. Todos os direitos reservados.
+  <section class="section" id="vantagens">
+    <h2>Por que comprar connosco?</h2>
+    <div class="benefits">
+      <div class="benefit">✅ Qualidade garantida</div>
+      <div class="benefit">🚚 Envio rápido para todo o país</div>
+      <div class="benefit">💬 Atendimento personalizado via WhatsApp</div>
+    </div>
+  </section>
+
+  <footer id="contacto">
+    <p>Entre em contacto: <a href="https://wa.me/351912345678" style="color: #00ff88;">WhatsApp</a> | Instagram: @beatrizsports</p>
+    <p>&copy; 2025 Beatriz Sports. Todos os direitos reservados.</p>
   </footer>
 
 </body>
