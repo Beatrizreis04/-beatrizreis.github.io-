@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Loja Futebol Top - Premium</title>
+<title>Loja Futebol Top - Versão Completa com Login</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
@@ -209,7 +209,6 @@ h2 {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  padding: 20px;
 }
 .modal-content {
   background: #fff;
@@ -366,10 +365,6 @@ footer a:hover {
     margin-top: 10px;
     flex-wrap: wrap;
   }
-  .filters {
-    flex-direction: column;
-    align-items: center;
-  }
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
@@ -403,7 +398,7 @@ footer a:hover {
     <input type="text" id="auth-username" placeholder="Nome de usuário" />
     <input type="password" id="auth-password" placeholder="Senha" />
     <button id="auth-submit">Entrar</button>
-    <p style="margin-top:15px; text-align:center;">Ainda não tem conta? <a href="#" id="switchAuth">Registar-se</a></p>
+    <p style="margin-top:15px; text-align:center;">Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a></p>
   </div>
 </div>
 
@@ -459,9 +454,9 @@ footer a:hover {
   <p>&copy; 2024 Loja Futebol Top. Todos os direitos reservados.</p>
 </footer>
 
-<!-- Scripts com funcionalidades avançadas -->
+<!-- Scripts com funcionalidades avançadas e login -->
 <script>
-  // Dados dos produtos (com mais detalhes e variedade)
+  // Dados dos produtos
   const produtos = [
     { id: 1, nome: "Camisola Nike Match", categoria: "camisola", marca: "Nike", preco: 45, imagem: "https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
     { id: 2, nome: "Chuteira Adidas Predator", categoria: "chuteira", marca: "Adidas", preco: 120, imagem: "https://images.unsplash.com/photo-1607785055400-8d36fa4f6a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
@@ -471,7 +466,6 @@ footer a:hover {
     { id: 6, nome: "Fato de Treino Puma", categoria: "fato", marca: "Puma", preco: 55, imagem: "https://images.unsplash.com/photo-1626541234567-1234567890ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
     { id: 7, nome: "Camisola Nike Away", categoria: "camisola", marca: "Nike", preco: 48, imagem: "https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
     { id: 8, nome: "Chuteira Adidas Speed", categoria: "chuteira", marca: "Adidas", preco: 140, imagem: "https://images.unsplash.com/photo-1607785055400-8d36fa4f6a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    // Adicione mais produtos conforme necessário
   ];
 
   let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
@@ -485,22 +479,16 @@ footer a:hover {
   const btnLogin = document.getElementById('loginBtn');
   const btnLogout = document.getElementById('logoutBtn');
   const modalAuth = document.getElementById('auth-modal');
-  const fecharAuth = document.querySelector('#auth-close');
+  const fecharAuth = document.getElementById('auth-close');
   const tituloAuth = document.getElementById('auth-title');
   const inputUser = document.getElementById('auth-username');
   const inputSenha = document.getElementById('auth-password');
   const btnAuth = document.getElementById('auth-submit');
-  const linkSwitchAuth = document.getElementById('switchAuth');
 
-  const linkCarrinho = document.getElementById('cartLink');
-  const modalCarrinho = document.getElementById('cart-modal');
-  const fecharCarrinho = document.querySelector('#cart-close');
-  const containerCarrinho = document.getElementById('cart-items');
-  const btnFinalizar = document.getElementById('checkoutBtn');
+  // Estado modo autenticação
+  let modoAuth = true; // true = login, false = registrar
 
-  let modoAtual = true; // True = login, false = cadastro
-
-  // Função para filtrar e exibir produtos
+  // Mostrar produtos filtrados
   function mostrarProdutos() {
     containerProdutos.innerHTML = '';
     const catFiltro = filtroCategoria.value;
@@ -514,10 +502,7 @@ footer a:hover {
     );
 
     if (filtrados.length === 0) {
-      containerProdutos.innerHTML = `
-        <div style="grid-column:1/-1; text-align:center; padding:40px; font-size:1.3em; color:#555;">
-          Nenhum produto encontrado.
-        </div>`;
+      containerProdutos.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; font-size:1.3em; color:#555;">Nenhum produto encontrado.</div>';
       return;
     }
 
@@ -538,18 +523,18 @@ footer a:hover {
     });
   }
 
-  // Eventos de filtros e busca
+  // Filtros e busca
   filtroCategoria.addEventListener('change', mostrarProdutos);
   filtroMarca.addEventListener('change', mostrarProdutos);
   buscaTexto.addEventListener('input', mostrarProdutos);
 
-  // Carregar produtos ao iniciar
+  // Evento ao carregar
   window.onload = () => {
     verificarLogin();
     mostrarProdutos();
   };
 
-  // Sistema de autenticação
+  // Autenticação
   function verificarLogin() {
     const usuario = localStorage.getItem('user');
     if (usuario) {
@@ -561,90 +546,114 @@ footer a:hover {
     }
   }
 
-  // Abrir modal autenticação
-  document.getElementById('loginBtn').onclick = () => { mostrarModalAuth(true); };
-  document.getElementById('logoutBtn').onclick = () => { logout(); };
-  document.querySelector('#auth-close').onclick = () => { esconderModalAuth(); };
-  document.querySelector('#switchAuth').onclick = (e) => { e.preventDefault(); alternarModoAuth(); };
-  document.getElementById('auth-submit').onclick = () => { processarAuth(); };
+  // Abrir modal login
+  document.getElementById('loginBtn').onclick = () => {
+    mostrarModalAuth(true);
+  };
 
-  let modoAuth = true; // true = login, false = registrar
-
-  function mostrarModalAuth(loginMode) {
-    modoAuth = loginMode;
-    document.getElementById('auth-title').textContent = loginMode ? 'Login' : 'Registrar-se';
-    document.getElementById('auth-username').value = '';
-    document.getElementById('auth-password').value = '';
-    document.querySelector('#auth-form p').innerHTML = loginMode
-      ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a>'
-      : 'Já possui conta? <a href="#" id="switchAuth">Entrar</a>';
-    document.querySelector('#switchAuth').onclick = (e) => { e.preventDefault(); alternarModoAuth(); };
-    modalAuth.style.display = 'flex';
-  }
-
-  function esconderModalAuth() {
-    modalAuth.style.display = 'none';
-  }
-
-  function alternarModoAuth() {
-    mostrarModalAuth(!modoAuth);
-  }
-
-  function processarAuth() {
-    const user = document.getElementById('auth-username').value.trim();
-    const senha = document.getElementById('auth-password').value.trim();
-
-    if (!user || !senha) {
-      alert('Preencha todos os campos.');
-      return;
-    }
-
-    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || {};
-
-    if (modoAuth) {
-      // Login
-      if (usuarios[user] && usuarios[user] === senha) {
-        localStorage.setItem('user', user);
-        alert('Login bem-sucedido!');
-        esconderModalAuth();
-        verificarLogin();
-      } else {
-        alert('Credenciais inválidas.');
-      }
-    } else {
-      // Registrar
-      if (usuarios[user]) {
-        alert('Nome de usuário já existe.');
-      } else {
-        usuarios[user] = senha;
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
-        alert('Conta criada! Faça login.');
-        alternarModoAuth();
-      }
-    }
-  }
-
-  function logout() {
+  // Logout
+  document.getElementById('logoutBtn').onclick = () => {
     localStorage.removeItem('user');
     verificarLogin();
-  }
+  };
 
-  // Adicionar produto ao carrinho
-  function adicionarAoCarrinho(idProduto) {
-    const produto = produtos.find(p => p.id === idProduto);
-    if (produto) {
-      carrinho.push(produto);
-      localStorage.setItem('carrinho', JSON.stringify(carrinho));
-      alert(`"${produto.nome}" adicionado ao carrinho!`);
+  // Fechar modal
+  document.getElementById('auth-close').onclick = () => {
+    esconderModalAuth();
+  };
+
+  // Trocar modo
+  document.getElementById('switchAuth').onclick = (e) => {
+    e.preventDefault();
+    alternarModoAuth();
+  };
+
+  // Mostrar modal
+function mostrarModalAuth(isLogin) {
+  modoAuth = isLogin;
+  document.getElementById('auth-title').textContent = isLogin ? 'Login' : 'Registrar-se';
+  document.getElementById('auth-username').value = '';
+  document.getElementById('auth-password').value = '';
+
+  // Atualizar texto do link
+  document.querySelector('#auth-form p').innerHTML = isLogin
+    ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a>'
+    : 'Já possui conta? <a href="#" id="switchAuth">Entrar</a>';
+
+  // Reatribuir evento ao link
+  document.getElementById('switchAuth').onclick = (e) => {
+    e.preventDefault();
+    alternarModoAuth();
+  };
+
+  document.querySelector('#auth-form p').innerHTML = isLogin
+    ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a>'
+    : 'Já possui conta? <a href="#" id="switchAuth">Entrar</a>';
+
+  document.querySelector('#auth-form p').innerHTML = isLogin
+    ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a>'
+    : 'Já possui conta? <a href="#" id="switchAuth">Entrar</a>';
+
+  modalAuth.style.display = 'flex';
+}
+
+// Esconder modal
+function esconderModalAuth() {
+  modalAuth.style.display = 'none';
+}
+
+// Alternar modo
+function alternarModoAuth() {
+  mostrarModalAuth(!modoAuth);
+}
+
+// Processar autenticação
+document.getElementById('auth-submit').onclick = () => {
+  const usuario = document.getElementById('auth-username').value.trim();
+  const senha = document.getElementById('auth-password').value.trim();
+  if (!usuario || !senha) {
+    alert('Preencha todos os campos.');
+    return;
+  }
+  let usuarios = JSON.parse(localStorage.getItem('usuarios')) || {};
+
+  if (modoAuth) { // login
+    if (usuarios[usuario] && usuarios[usuario] === senha) {
+      localStorage.setItem('user', usuario);
+      alert('Login bem-sucedido!');
+      esconderModalAuth();
+      verificarLogin();
+    } else {
+      alert('Credenciais inválidas.');
+    }
+  } else { // registrar
+    if (usuarios[usuario]) {
+      alert('Nome de usuário já existe.');
+    } else {
+      usuarios[usuario] = senha;
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+      alert('Conta criada! Faça login.');
+      alternarModoAuth();
     }
   }
+};
 
-  // Exibir carrinho
+// Adicionar ao carrinho
+function adicionarAoCarrinho(idProduto) {
+  const produto = produtos.find(p => p.id === idProduto);
+  if (produto) {
+    carrinho.push(produto);
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert(`"${produto.nome}" adicionado ao carrinho!`);
+  }
+}
+
+// Mostrar carrinho
 function mostrarCarrinho() {
-  containerCarrinho.innerHTML = '';
-
+  const container = document.getElementById('cart-items');
+  container.innerHTML = '';
   if (carrinho.length === 0) {
-    containerCarrinho.innerHTML = '<p style="text-align:center; padding:40px; font-size:1.3em; color:#555;">O carrinho está vazio.</p>';
+    container.innerHTML = '<p style="text-align:center; padding:40px; font-size:1.3em; color:#555;">O carrinho está vazio.</p>';
   } else {
     carrinho.forEach((item, index) => {
       const div = document.createElement('div');
@@ -657,7 +666,7 @@ function mostrarCarrinho() {
         </div>
         <button class="remove-btn" onclick="removerDoCarrinho(${index})">&times;</button>
       `;
-      containerCarrinho.appendChild(div);
+      container.appendChild(div);
     });
   }
   document.getElementById('cart-modal').style.display = 'flex';
@@ -667,6 +676,7 @@ function mostrarCarrinho() {
 document.getElementById('cart-close').onclick = () => {
   document.getElementById('cart-modal').style.display = 'none';
 }
+
 // Finalizar compra
 document.getElementById('checkoutBtn').onclick = () => {
   if (carrinho.length === 0) {
@@ -678,12 +688,19 @@ document.getElementById('checkoutBtn').onclick = () => {
   localStorage.removeItem('carrinho');
   mostrarCarrinho();
 }
-// Remover item do carrinho
+
+// Remover item
 function removerDoCarrinho(indice) {
   carrinho.splice(indice, 1);
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
   mostrarCarrinho();
 }
+
+// Evento clique no link do carrinho
+document.getElementById('cartLink').onclick = (e) => {
+  e.preventDefault();
+  mostrarCarrinho();
+};
 </script>
 
 </body>
