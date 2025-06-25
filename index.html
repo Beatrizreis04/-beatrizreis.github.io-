@@ -1,72 +1,120 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produto da Beatriz</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loja Esportiva - Beatriz</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f6f6f6;
-      color: #333;
-      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #fff;
     }
 
     header {
-      background: #222;
-      color: white;
+      background-color: #1f1f1f;
       padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #00ff88;
     }
 
     .container {
-      padding: 30px;
+      padding: 30px 20px;
+      max-width: 1100px;
+      margin: auto;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background-color: #1c1c1c;
       border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      transition: 0.3s;
     }
 
-    .button {
+    .product:hover {
+      transform: scale(1.03);
+      background-color: #222;
+    }
+
+    .product img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+    }
+
+    .price {
+      color: #00ff88;
+      font-weight: bold;
+      margin: 5px 0 15px;
+    }
+
+    .btn {
       display: inline-block;
-      margin-top: 20px;
-      background: #28a745;
-      color: white;
-      padding: 15px 25px;
+      padding: 10px 20px;
+      background: #00ff88;
+      color: #000;
+      border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 8px;
     }
 
     footer {
-      background: #ddd;
-      padding: 10px;
+      text-align: center;
+      padding: 20px;
+      background-color: #1f1f1f;
       margin-top: 40px;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Bem-vindo(a) à minha loja!</h1>
-  </header>
+  <header>🔥 Loja de Roupa Desportiva 🔥</header>
 
   <div class="container">
-    <h2>🌟 Produto/Serviço em Destaque 🌟</h2>
-    <img src="https://via.placeholder.com/600x300" alt="Imagem do produto">
-    <p style="margin-top:20px; font-size: 18px;">
-      Descrição incrível do seu produto ou serviço. Fale sobre o que ele resolve e porque vale a pena.
-    </p>
-    <p><strong>Preço: 29,90€</strong></p>
+    <h2 style="text-align:center;">Os melhores produtos para o teu jogo ⚽</h2>
+    <div class="products">
 
-    <a class="button" href="https://wa.me/351912345678" target="_blank">Falar no WhatsApp</a>
+      <div class="product">
+        <img src="https://via.placeholder.com/300x200?text=Camisola+de+Futebol" alt="Camisola de Futebol">
+        <h3>Camisola de Futebol</h3>
+        <p class="price">€24,90</p>
+        <a class="btn" href="https://wa.me/351912345678" target="_blank">Comprar via WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="https://via.placeholder.com/300x200?text=Chuteiras" alt="Chuteiras">
+        <h3>Chuteiras Profissionais</h3>
+        <p class="price">€49,90</p>
+        <a class="btn" href="https://wa.me/351912345678" target="_blank">Comprar via WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="https://via.placeholder.com/300x200?text=Fato+de+Treino" alt="Fato de Treino">
+        <h3>Fato de Treino Premium</h3>
+        <p class="price">€39,90</p>
+        <a class="btn" href="https://wa.me/351912345678" target="_blank">Comprar via WhatsApp</a>
+      </div>
+
+    </div>
   </div>
 
   <footer>
-    <p>&copy; 2025 Beatriz Reis. Todos os direitos reservados.</p>
+    &copy; 2025 Beatriz Sports. Todos os direitos reservados.
   </footer>
 
 </body>
