@@ -1,219 +1,338 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Loja de Roupas Esportivas</title>
-    <style>
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Loja de Roupas Esportivas</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-        }
+<style>
+    /* Reset básico */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        /* Cabeçalho */
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f0f2f5;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* Cabeçalho fixo */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #0d6efd;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 999;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+        color: #fff;
+        font-size: 1.8em;
+        font-weight: 700;
+    }
+
+    nav {
+        display: flex;
+        gap: 25px;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1em;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+        background-color: #fff;
+        color: #0d6efd;
+    }
+
+    /* Espaço para compensar a barra fixa */
+    .spacer {
+        height: 80px;
+    }
+
+    /* Banner/banner principal */
+    .banner {
+        margin-top: 80px;
+        background-image: url('https://images.unsplash.com/photo-1593642532973-d31b6557fa68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+        background-size: cover;
+        background-position: center;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .banner::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .banner-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+    }
+
+    .banner h2 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    /* Seção de produtos */
+    #produtos {
+        padding: 60px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    #produtos h2 {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 40px;
+        font-weight: 700;
+        color: #222;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 24px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+
+    .card:hover img {
+        transform: scale(1.05);
+    }
+
+    .card-info {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card h3 {
+        margin-bottom: 10px;
+        font-size: 1.4em;
+        color: #222;
+    }
+
+    .card p {
+        margin-bottom: 15px;
+        font-size: 1em;
+        color: #555;
+    }
+
+    .price {
+        font-size: 1.3em;
+        font-weight: 700;
+        color: #e67e22;
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 12px;
+        background-color: #0d6efd;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0069d9;
+    }
+
+    /* Seções adicionais */
+    section {
+        padding: 60px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    section h2 {
+        font-size: 2.4em;
+        margin-bottom: 20px;
+        color: #222;
+        font-weight: 700;
+    }
+
+    section p {
+        font-size: 1.2em;
+        color: #555;
+        line-height: 1.5;
+        max-width: 800px;
+        margin: 0 auto 20px;
+    }
+
+    /* Rodapé */
+    footer {
+        background-color: #222;
+        color: #ccc;
+        padding: 30px 20px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    footer p {
+        margin-bottom: 10px;
+    }
+
+    /* Responsividade */
+    @media(max-width: 768px){
         header {
-            background-color: #0d6efd; /* azul vibrante */
-            padding: 20px;
-            text-align: center;
-            color: #fff;
+            flex-direction: column;
+            align-items: flex-start;
         }
-
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
         nav {
             margin-top: 10px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #ffc107; /* amarelo dourado */
-        }
-
-        /* Seção de destaque */
-        .banner {
-            background-image: url('https://images.unsplash.com/photo-1593642532973-d31b6557fa68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            text-align: center;
-        }
-
-        .banner h2 {
-            font-size: 3em;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        /* Seção de produtos */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 40px 20px;
-        }
-
-        .product-card {
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-
-        .product-card img {
+            flex-direction: column;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
         }
-
-        .product-info {
-            padding: 15px;
+        nav a {
+            padding: 10px;
+            width: 100%;
         }
-
-        .product-info h3 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
+        .banner h2 {
+            font-size: 2em;
         }
-
-        .product-info p {
-            font-size: 1em;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #e67e22;
-        }
-
-        /* Botão de compra */
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #0d6efd;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #0069d9;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: #222;
-            color: #ccc;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        /* Responsividade */
-        @media(max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            .banner h2 {
-                font-size: 2em;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Loja Esportiva</h1>
-        <nav>
-            <a href="#home">Início</a>
-            <a href="#produtos">Produtos</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#contato">Contato</a>
-        </nav>
-    </header>
 
-    <section class="banner" id="home">
+<!-- Cabeçalho fixa -->
+<header>
+    <h1>Loja Esportiva</h1>
+    <nav>
+        <a href="#home">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
+<div class="spacer"></div>
+
+<!-- Banner principal -->
+<section class="banner" id="home">
+    <div class="banner-content">
         <h2>Vista-se para a vitória!</h2>
-    </section>
+        <p>Produtos esportivos de alta qualidade para atletas e entusiastas.</p>
+        <a href="#produtos" class="btn" style="background-color:#ffc107; color:#222;">Ver Produtos</a>
+    </div>
+</section>
 
-    <section class="products" id="produtos">
+<!-- Seção de produtos -->
+<section id="produtos">
+    <h2>Nossos Produtos</h2>
+    <div class="grid">
         <!-- Produto 1 -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1612831455547-81c84d4b7d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camisa de Futebol">
-            <div class="product-info">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1612831455547-81c84d4b7d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camisa de Futebol" />
+            <div class="card-info">
                 <h3>Camisa de Futebol</h3>
                 <p>Camisa oficial de time, confortável e estilosa.</p>
-                <p class="price">€39,99</p>
+                <div class="price">€39,99</div>
                 <a href="#" class="btn">Comprar</a>
             </div>
         </div>
         <!-- Produto 2 -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1590073697342-9d3e3b6b730a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chuteira">
-            <div class="product-info">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1590073697342-9d3e3b6b730a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chuteira" />
+            <div class="card-info">
                 <h3>Chuteira de Futebol</h3>
                 <p>Chuteira leve e com excelente aderência.</p>
-                <p class="price">€59,99</p>
+                <div class="price">€59,99</div>
                 <a href="#" class="btn">Comprar</a>
             </div>
         </div>
         <!-- Produto 3 -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1570571746038-3b9f0d6a3f7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fato de Treino">
-            <div class="product-info">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1570571746038-3b9f0d6a3f7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fato de Treino" />
+            <div class="card-info">
                 <h3>Fato de Treino</h3>
                 <p>Fato confortável para treinos diários.</p>
-                <p class="price">€49,99</p>
+                <div class="price">€49,99</div>
                 <a href="#" class="btn">Comprar</a>
             </div>
         </div>
-        <!-- Adicione mais produtos conforme necessário -->
-    </section>
+        <!-- Adicione mais produtos aqui -->
+    </div>
+</section>
 
-    <section id="sobre" style="padding:40px; text-align:center;">
-        <h2>Sobre Nós</h2>
-        <p>Somos uma loja dedicada a fornecer roupas esportivas de alta qualidade para atletas e entusiastas do esporte. Nosso objetivo é oferecer produtos modernos, confortáveis e acessíveis.</p>
-    </section>
+<!-- Sobre nós -->
+<section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>Somos uma loja dedicada a fornecer roupas esportivas de alta qualidade para atletas e entusiastas do esporte. Nosso objetivo é oferecer produtos modernos, confortáveis e acessíveis. Com uma vasta seleção de camisolas, chuteiras, fatos de treino e mais, buscamos inspirar você a alcançar seus objetivos esportivos com estilo e conforto.</p>
+</section>
 
-    <section id="contato" style="padding:40px; text-align:center;">
-        <h2>Contato</h2>
-        <p>Email: contato@lojaesportiva.com</p>
-        <p>Telefone: +351 912 345 678</p>
-        <p>Endereço: Rua do Esporte, 123, Lisboa</p>
-    </section>
+<!-- Contato -->
+<section id="contato">
+    <h2>Contato</h2>
+    <p>Quer saber mais? Entre em contato conosco:</p>
+    <p>Email: <a href="mailto:contato@lojaesportiva.com" style="color:#0d6efd;">contato@lojaesportiva.com</a></p>
+    <p>Telefone: +351 912 345 678</p>
+    <p>Endereço: Rua do Esporte, 123, Lisboa</p>
+</section>
 
-    <footer>
-        <p>&copy; 2024 Loja Esportiva. Todos os direitos reservados.</p>
-    </footer>
+<!-- Rodapé -->
+<footer>
+    <p>&copy; 2024 Loja Esportiva. Todos os direitos reservados.</p>
+    <p>Redes sociais: 
+        <a href="#" style="color:#ccc; text-decoration:none; margin:0 10px;">Facebook</a> | 
+        <a href="#" style="color:#ccc; text-decoration:none; margin:0 10px;">Instagram</a> | 
+        <a href="#" style="color:#ccc; text-decoration:none; margin:0 10px;">Twitter</a>
+    </p>
+</footer>
+
 </body>
 </html>
