@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Loja de Futebol - Camisolas, Chuteiras, Fatos</title>
+<title>Loja Futebol Top - Camisolas, Chuteiras, Fatos</title>
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" />
 
 <style>
 /* Reset básico */
@@ -18,9 +18,13 @@
 /* Corpo geral */
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #f4f4f4;
+  background-color: #fafafa;
   color: #222;
   line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* Cabeçalho */
@@ -28,16 +32,19 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #222;
+  background: linear-gradient(90deg, #222, #444);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   z-index: 999;
+  transition: background 0.3s;
 }
 header h1 {
   color: #fff;
   font-size: 1.8em;
+  font-weight: 700;
 }
 nav {
   display: flex;
@@ -45,21 +52,22 @@ nav {
 }
 nav a {
   color: #fff;
-  margin-left: 20px;
-  text-decoration: none;
+  margin-left: 25px;
   font-weight: 600;
-  cursor: pointer;
+  font-size: 1em;
+  transition: color 0.3s, transform 0.2s;
 }
 nav a:hover {
   color: #f4a261;
+  transform: scale(1.05);
 }
 
 /* Espaço para compensar o header */
 .spacer {
-  height: 70px;
+  height: 80px;
 }
 
-/* Área de login/signup */
+/* Área de autenticação */
 #auth-section {
   display: flex;
   align-items: center;
@@ -71,27 +79,36 @@ nav a:hover {
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
 }
 #loginBtn {
   background-color: #f4a261;
   color: #222;
 }
+#loginBtn:hover {
+  background-color: #e9a04b;
+  transform: scale(1.05);
+}
 #logoutBtn {
   background-color: #e76f51;
   color: #fff;
-  display: none;
+}
+#logoutBtn:hover {
+  background-color: #d65a43;
+  transform: scale(1.05);
 }
 
-/* Seção principal com filtros e produtos */
+/* Seção principal - produtos e filtros */
 section#products {
-  padding: 20px;
+  padding: 40px 20px;
   max-width: 1200px;
   margin: auto;
 }
 h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: #2a9d8f;
+  font-size: 2.2em;
 }
 
 /* Filtros */
@@ -99,104 +116,135 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 15px;
   margin-bottom: 30px;
 }
 .filters select, .filters input {
-  margin: 10px;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 10px 14px;
+  border-radius: 6px;
   border: 1px solid #ccc;
   font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+.filters select:focus, .filters input:focus {
+  border-color: #2a9d8f;
+  outline: none;
 }
 
-/* Produtos grid */
+/* Grid de produtos */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
 }
 .product-card {
   background: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .product-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 .product-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  transition: transform 0.3s;
+}
+.product-image:hover {
+  transform: scale(1.02);
 }
 .product-info {
-  padding: 10px;
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .product-name {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.2em;
   margin-bottom: 8px;
-  font-size: 1.1em;
 }
 .product-price {
   color: #e76f51;
   font-weight: 700;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  margin-bottom: 12px;
 }
-button.buy-btn {
-  margin-top: 10px;
-  padding: 8px 12px;
+.buy-btn {
+  padding: 10px;
   background-color: #2a9d8f;
   color: #fff;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 6px;
   font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
 }
-button.buy-btn:hover {
+.buy-btn:hover {
   background-color: #218c8f;
+  transform: scale(1.02);
 }
 
-/* Seção login/signup modal */
+/* Modal autenticação */
 #auth-modal {
-  display: none; /* escondido por padrão */
+  display: none; /* inicialmente escondido */
   position: fixed;
-  top: 0; left: 0; right:0; bottom:0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.6);
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 20px;
 }
 #auth-form {
   background: #fff;
   padding: 30px;
-  border-radius: 8px;
-  width: 90%;
+  border-radius: 10px;
   max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
 }
 #auth-form h3 {
   margin-bottom: 20px;
   text-align: center;
   color: #2a9d8f;
+  font-size: 1.8em;
 }
 #auth-form input {
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
   font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+#auth-form input:focus {
+  border-color: #2a9d8f;
+  outline: none;
 }
 #auth-form button {
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
   background-color: #2a9d8f;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: 600;
+  font-size: 1em;
   cursor: pointer;
+  transition: background 0.3s;
 }
 #auth-form button:hover {
   background-color: #218c8f;
@@ -205,16 +253,21 @@ button.buy-btn:hover {
   position: absolute;
   top: 10px;
   right: 15px;
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+#auth-close:hover {
   color: #222;
 }
 
-/* Rodapé */
+/* Footer */
 footer {
   background-color: #222;
   color: #fff;
   padding: 20px;
+  margin-top: 40px;
   text-align: center;
 }
 footer p {
@@ -222,7 +275,6 @@ footer p {
 }
 footer a {
   color: #f4a261;
-  text-decoration: none;
 }
 footer a:hover {
   text-decoration: underline;
@@ -241,6 +293,10 @@ footer a:hover {
     flex-direction: column;
   }
 }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
@@ -255,7 +311,7 @@ footer a:hover {
   </nav>
   <div id="auth-section">
     <button id="loginBtn">Login</button>
-    <button id="logoutBtn">Logout</button>
+    <button id="logoutBtn" style="display:none;">Logout</button>
   </div>
 </header>
 <div class="spacer"></div>
@@ -268,39 +324,37 @@ footer a:hover {
     <input type="text" id="auth-username" placeholder="Nome de usuário" />
     <input type="password" id="auth-password" placeholder="Senha" />
     <button id="auth-submit">Entrar</button>
-    <p id="auth-switch">Ainda não tem conta? <a href="#" id="switchAuth">Registar-se</a></p>
+    <p style="margin-top:10px; text-align:center;">Ainda não tem conta? <a href="#" id="switchAuth">Registar-se</a></p>
   </div>
 </div>
 
 <!-- Seção produtos -->
-<section id="products" style="padding:40px 20px;">
+<section id="products">
   <h2>Produtos de Futebol</h2>
   <!-- Filtros -->
   <div class="filters">
-    <select id="categoryFilter">
+    <select id="categoryFilter" aria-label="Filtrar por categoria">
       <option value="all">Todas as categorias</option>
       <option value="camisola">Camisolas</option>
       <option value="chuteira">Chuteiras</option>
       <option value="fato">Fatos de treino</option>
     </select>
-    <select id="brandFilter">
+    <select id="brandFilter" aria-label="Filtrar por marca">
       <option value="all">Todas as marcas</option>
       <option value="Nike">Nike</option>
       <option value="Adidas">Adidas</option>
       <option value="Puma">Puma</option>
     </select>
-    <input type="text" id="searchInput" placeholder="Pesquisar..." />
+    <input type="text" id="searchInput" placeholder="Pesquisar..." aria-label="Pesquisar produtos"/>
   </div>
   <!-- Grid de produtos -->
-  <div class="products-grid" id="productsContainer">
-    <!-- Os produtos serão carregados aqui via JS -->
-  </div>
+  <div class="products-grid" id="productsContainer"></div>
 </section>
 
-<!-- Sobre -->
-<section id="about" style="padding:40px 20px; background:#e0e0e0;">
+<!-- Sobre nós -->
+<section id="about" style="background:#e0e0e0; padding:40px 20px;">
   <h2 style="text-align:center; margin-bottom:20px;">Sobre Nós</h2>
-  <p style="max-width:800px; margin:auto; text-align:center;">
+  <p style="max-width:800px; margin:auto; text-align:center; font-size:1.1em;">
     Somos a loja líder em equipamentos de futebol, oferecendo camisolas, chuteiras, fatos de treino e acessórios de alta qualidade. Nosso objetivo é ajudar você a alcançar o seu melhor em campo!
   </p>
 </section>
@@ -308,7 +362,7 @@ footer a:hover {
 <!-- Contato -->
 <section id="contact" style="padding:40px 20px;">
   <h2 style="text-align:center; margin-bottom:20px;">Contato</h2>
-  <p style="max-width:800px; margin:auto; text-align:center;">
+  <p style="max-width:800px; margin:auto; text-align:center; font-size:1.1em;">
     Email: suporte@lojafutebol.com | Telefone: +351 912 345 678 | Endereço: Rua do Esporte, Lisboa
   </p>
 </section>
@@ -320,14 +374,14 @@ footer a:hover {
 
 <!-- Scripts -->
 <script>
-/* Produtos de exemplo */
+// Lista de produtos
 const products = [
   {
     id: 1,
     name: "Camisola Nike Match",
     category: "camisola",
     brand: "Nike",
-    price: 45.00,
+    price: 45,
     image: "https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -335,15 +389,15 @@ const products = [
     name: "Chuteira Adidas Predator",
     category: "chuteira",
     brand: "Adidas",
-    price: 120.00,
+    price: 120,
     image: "https://images.unsplash.com/photo-1607785055400-8d36fa4f6a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 3,
-    name: "Fato de Treino Puma",
+    name: "Fato Puma Treino",
     category: "fato",
     brand: "Puma",
-    price: 60.00,
+    price: 60,
     image: "https://images.unsplash.com/photo-1618706357483-7f8d3a6f0f05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -351,7 +405,7 @@ const products = [
     name: "Camisola Adidas Home",
     category: "camisola",
     brand: "Adidas",
-    price: 50.00,
+    price: 50,
     image: "https://images.unsplash.com/photo-1628076572753-8b3e2d682b75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -359,21 +413,28 @@ const products = [
     name: "Chuteira Nike Phantom",
     category: "chuteira",
     brand: "Nike",
-    price: 130.00,
+    price: 130,
     image: "https://images.unsplash.com/photo-1628390209642-2a6b0f6f2e1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   // Adicione mais produtos aqui
 ];
 
-/* Função para exibir produtos */
-function displayProducts(filterCategory = 'all', filterBrand = 'all', searchTerm = '') {
+// Variável do carrinho
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Função para exibir produtos na tela
+function displayProducts() {
   const container = document.getElementById('productsContainer');
   container.innerHTML = '';
 
+  const category = document.getElementById('categoryFilter').value;
+  const brand = document.getElementById('brandFilter').value;
+  const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+
   const filtered = products.filter(p => {
-    const matchCategory = filterCategory === 'all' || p.category === filterCategory;
-    const matchBrand = filterBrand === 'all' || p.brand === filterBrand;
-    const matchSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchCategory = (category === 'all') || (p.category === category);
+    const matchBrand = (brand === 'all') || (p.brand === brand);
+    const matchSearch = p.name.toLowerCase().includes(searchTerm);
     return matchCategory && matchBrand && matchSearch;
   });
 
@@ -398,46 +459,19 @@ function displayProducts(filterCategory = 'all', filterBrand = 'all', searchTerm
   });
 }
 
-/* Inicializa produtos */
+// Evento ao mudar filtros
+document.querySelectorAll('.filters select, .filters input').forEach(elem => {
+  elem.addEventListener('change', displayProducts);
+  elem.addEventListener('input', displayProducts);
+});
+
+// Carregar produtos ao abrir
 window.onload = () => {
   displayProducts();
-
-  // Filtros
-  document.getElementById('categoryFilter').addEventListener('change', () => {
-    applyFilters();
-  });
-  document.getElementById('brandFilter').addEventListener('change', () => {
-    applyFilters();
-  });
-  document.getElementById('searchInput').addEventListener('input', () => {
-    applyFilters();
-  });
-
-  // Login/logout
-  checkLoginStatus();
+  checkLogin();
 };
 
-/* Aplicar filtros */
-function applyFilters() {
-  const category = document.getElementById('categoryFilter').value;
-  const brand = document.getElementById('brandFilter').value;
-  const search = document.getElementById('searchInput').value;
-  displayProducts(category, brand, search);
-}
-
-/* Carrinho de compras simples usando localStorage */
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-function addToCart(productId) {
-  const product = products.find(p => p.id === productId);
-  if (product) {
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`"${product.name}" adicionado ao carrinho!`);
-  }
-}
-
-/* Login e logout */
+// Sistema de login
 const loginBtn = document.getElementById('loginBtn');
 const logoutBtn = document.getElementById('logoutBtn');
 const authModal = document.getElementById('auth-modal');
@@ -446,17 +480,15 @@ const authTitle = document.getElementById('auth-title');
 const authUsername = document.getElementById('auth-username');
 const authPassword = document.getElementById('auth-password');
 const authSubmit = document.getElementById('auth-submit');
-const authSwitch = document.getElementById('switchAuth');
-
 let isLoginMode = true;
 
-function checkLoginStatus() {
+function checkLogin() {
   const user = localStorage.getItem('user');
   if (user) {
-    loginBtn.style.display = 'none';
+    document.getElementById('auth-section').style.display = 'none';
     logoutBtn.style.display = 'inline-block';
   } else {
-    loginBtn.style.display = 'inline-block';
+    document.getElementById('auth-section').style.display = 'flex';
     logoutBtn.style.display = 'none';
   }
 }
@@ -466,72 +498,73 @@ loginBtn.onclick = () => {
 };
 logoutBtn.onclick = () => {
   localStorage.removeItem('user');
-  checkLoginStatus();
+  checkLogin();
 };
-document.getElementById('auth-close').onclick = () => {
-  hideAuthModal();
-};
-document.getElementById('switchAuth').onclick = (e) => {
-  e.preventDefault();
-  toggleAuthMode();
-};
-authSubmit.onclick = () => {
-  handleAuth();
-};
+document.getElementById('auth-close').onclick = () => hideAuthModal();
+document.getElementById('switchAuth').onclick = () => toggleAuthMode();
 
 function showAuthModal(loginMode) {
   isLoginMode = loginMode;
-  authTitle.textContent = loginMode ? 'Login' : 'Registar-se';
-  document.getElementById('auth-username').value = '';
-  document.getElementById('auth-password').value = '';
-  document.getElementById('auth-switch').innerHTML = loginMode 
+  authTitle.textContent = loginMode ? "Login" : "Registar-se";
+  authUsername.value = '';
+  authPassword.value = '';
+  document.querySelector('#auth-form p').innerHTML = loginMode
     ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registar-se</a>'
     : 'Já tem conta? <a href="#" id="switchAuth">Entrar</a>';
-  document.getElementById('auth-switch').onclick = (e) => {
+
+  document.getElementById('switchAuth').onclick = (e) => {
     e.preventDefault();
     toggleAuthMode();
   };
+
   authModal.style.display = 'flex';
 }
-
 function hideAuthModal() {
   authModal.style.display = 'none';
 }
-
 function toggleAuthMode() {
   showAuthModal(!isLoginMode);
 }
-
 function handleAuth() {
   const username = authUsername.value.trim();
   const password = authPassword.value.trim();
+
   if (!username || !password) {
     alert('Preencha todos os campos.');
     return;
   }
 
+  let users = JSON.parse(localStorage.getItem('users')) || {};
+
   if (isLoginMode) {
-    // Login
-    const user = JSON.parse(localStorage.getItem('users')) || {};
-    if (user[username] && user[username] === password) {
+    if (users[username] && users[username] === password) {
       localStorage.setItem('user', username);
       alert('Login bem-sucedido!');
       hideAuthModal();
-      checkLoginStatus();
+      checkLogin();
     } else {
       alert('Credenciais inválidas.');
     }
   } else {
-    // Registro
-    let users = JSON.parse(localStorage.getItem('users')) || {};
     if (users[username]) {
-      alert('Nome de usuário já existe.');
+      alert('Usuário já existe.');
     } else {
       users[username] = password;
       localStorage.setItem('users', JSON.stringify(users));
-      alert('Conta criada com sucesso! Faça login.');
+      alert('Conta criada! Faça login.');
       toggleAuthMode();
     }
+  }
+}
+document.getElementById('auth-submit').onclick = handleAuth;
+
+// Função para adicionar produtos ao carrinho
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  if (product) {
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`"${product.name}" adicionado ao carrinho!`);
   }
 }
 </script>
