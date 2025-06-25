@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Vença com Estilo - Loja Esportiva</title>
+<title>Loja de Futebol - Roupas, Chuteiras e Acessórios</title>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
 
@@ -18,7 +18,7 @@
   /* Corpo */
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f0f2f5;
     color: #222;
     line-height: 1.6;
 }
@@ -39,7 +39,7 @@ header {
 
 header h1 {
     font-size: 2em;
-    color: #2b7a78;
+    color: #e53935; /* Vermelho esportivo */
     font-weight: 700;
 }
 
@@ -53,7 +53,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #3a9d9d;
+    color: #d32f2f;
     transform: scale(1.05);
 }
 
@@ -62,10 +62,10 @@ nav a:hover {
     height: 80px;
 }
 
-/* Seção hero com imagem grande */
+/* Seção hero com imagem grande e mensagem impactante */
 section.hero {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center/cover;
+    background: url('https://images.unsplash.com/photo-1593437047357-8e0b7b1d7c86?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,7 +77,7 @@ section.hero {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(43, 122, 120, 0.6); /* overlay para destaque do texto */
+    background: rgba(229, 57, 53, 0.6); /* overlay vermelho */
 }
 
 .hero-content {
@@ -111,18 +111,18 @@ section.hero {
     font-size: 1.3em;
     font-weight: 700;
     color: #fff;
-    background-color: #3a9d9d;
+    background-color: #e53935;
     border-radius: 50px;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn-cta:hover {
-    background-color: #317d7d;
+    background-color: #c62828;
     transform: scale(1.05);
 }
 
-/* Seção de produtos em destaque */
+/* Seção produtos */
 section.products {
     padding: 60px 20px;
     background-color: #fff;
@@ -134,7 +134,7 @@ section.products h2 {
     text-align: center;
     font-size: 2.8em;
     margin-bottom: 40px;
-    color: #2b7a78;
+    color: #e53935;
 }
 
 .cards {
@@ -165,7 +165,7 @@ section.products h2 {
 .card h3 {
     margin: 15px;
     font-size: 1.5em;
-    color: #2b7a78;
+    color: #e53935;
 }
 
 .card p {
@@ -174,17 +174,17 @@ section.products h2 {
     color: #555;
 }
 
-/* Seção de chamada para ação final */
+/* Seção chamada para ação final */
 section.cta {
     padding: 60px 20px;
-    background-color: #e0f2f1;
+    background-color: #fbe9e7;
     text-align: center;
 }
 
 section.cta h2 {
     font-size: 2.8em;
     margin-bottom: 20px;
-    color: #2b7a78;
+    color: #e53935;
 }
 
 section.cta p {
@@ -198,20 +198,20 @@ section.cta p {
     font-size: 1.3em;
     font-weight: 700;
     color: #fff;
-    background-color: #388e3c;
+    background-color: #c62828;
     border-radius: 50px;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn-secondary:hover {
-    background-color: #2e7d32;
+    background-color: #b71c1c;
     transform: scale(1.05);
 }
 
 /* Rodapé */
 footer {
-    background-color: #2b7a78;
+    background-color: #e53935;
     color: #fff;
     padding: 40px 20px;
     text-align: center;
@@ -230,7 +230,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #c8e6e6;
+    color: #ffcccb;
 }
 
 /* Responsividade */
@@ -260,7 +260,7 @@ footer a:hover {
 
 <!-- Cabeçalho -->
 <header>
-    <h1>Vença com Estilo</h1>
+    <h1>Loja de Futebol</h1>
     <nav>
         <a href="#hero">Início</a>
         <a href="#produtos">Produtos</a>
@@ -270,59 +270,59 @@ footer a:hover {
 </header>
 <div class="spacer"></div>
 
-<!-- Seção Hero com imagem grande e mensagem -->
+<!-- Seção Hero -->
 <section class="hero" id="hero">
     <div class="hero-content">
-        <h1>Transforme Seu Desempenho, Supere Seus Limites</h1>
-        <p>Produtos esportivos de alta qualidade para atletas e entusiastas</p>
-        <a href="#produtos" class="btn-cta">Confira Agora</a>
+        <h1>Domine o Campo com Nossas Roupas e Chuteiras</h1>
+        <p>Encontre as melhores roupas, chuteiras e acessórios para vencer qualquer jogo</p>
+        <a href="#produtos" class="btn-cta">Veja Nossos Produtos</a>
     </div>
 </section>
 
-<!-- Seção de produtos em destaque -->
+<!-- Produtos em destaque -->
 <section class="products" id="produtos">
     <h2>Nosso Catálogo</h2>
     <div class="cards">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Roupas esportivas" />
-            <h3>Roupas Técnicas</h3>
-            <p>Conforto e performance para treinos e competições.</p>
+            <img src="https://images.unsplash.com/photo-1628076572753-8b3e2d682b75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camisas de futebol" />
+            <h3>Camisas de Jogo</h3>
+            <p>Leves, respiráveis, para você jogar com conforto e estilo.</p>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1590073697342-9d3e3b6b730a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Calçados esportivos" />
-            <h3>Calçados Esportivos</h3>
-            <p>Leveza, aderência e velocidade em cada passo.</p>
+            <img src="https://images.unsplash.com/photo-1607785055400-8d36fa4f6a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chuteiras de futebol" />
+            <h3>Chuteiras Profissionais</h3>
+            <p>Adere bem ao gramado, para máxima velocidade e controle.</p>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1570571746038-3b9f0d6a3f7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Acessórios Esportivos" />
-            <h3>Acessórios Essenciais</h3>
-            <p>De bonés a luvas, tudo que você precisa para vencer.</p>
+            <img src="https://images.unsplash.com/photo-1618706357483-7f8d3a6f0f05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Acessórios de futebol" />
+            <h3>Acessórios</h3>
+            <p>Bonés, meiões, luvas e mais para seu desempenho extra.</p>
         </div>
     </div>
 </section>
 
-<!-- Seção final de motivação -->
+<!-- Seção final motivacional -->
 <section class="cta" id="sobre">
-    <h2>Pronto para Vencer?</h2>
-    <p>Eleve sua performance com nossos produtos de alta tecnologia. Junte-se aos campeões!</p>
-    <a href="#contato" class="btn-secondary">Entre em Contato</a>
+    <h2>Pronto para Vencer em Campo?</h2>
+    <p>Com nossos produtos, você chega mais longe. Faça parte do time campeão!</p>
+    <a href="#contato" class="btn-secondary">Fale Conosco</a>
 </section>
 
 <!-- Contato -->
-<section id="contato" style="background-color:#f4f4f4; padding:60px 20px; text-align:center;">
-    <h2 style="font-size:2.8em; margin-bottom:20px; color:#2b7a78;">Fale Conosco</h2>
-    <p>Email: <a href="mailto:contato@lojaesportiva.com" style="color:#2b7a78;">contato@lojaesportiva.com</a></p>
+<section id="contato" style="background-color:#f0f2f5; padding:60px 20px; text-align:center;">
+    <h2 style="font-size:2.8em; margin-bottom:20px; color:#e53935;">Fale Conosco</h2>
+    <p>Email: <a href="mailto:contato@lojafutebol.com" style="color:#e53935;">contato@lojafutebol.com</a></p>
     <p>Telefone: +351 912 345 678</p>
-    <p>Endereço: Rua do Esporte, 123, Lisboa</p>
+    <p>Endereço: Rua do Esporte, 45, Lisboa</p>
 </section>
 
 <!-- Rodapé -->
 <footer>
-    <p>&copy; 2024 Vença com Estilo. Todos os direitos reservados.</p>
+    <p>&copy; 2024 Loja de Futebol. Todos os direitos reservados.</p>
     <p>
-        Siga-nos nas redes sociais:
-        <a href="#">Facebook</a> |
-        <a href="#">Instagram</a> |
+        Redes Sociais:
+        <a href="#">Facebook</a> | 
+        <a href="#">Instagram</a> | 
         <a href="#">Twitter</a>
     </p>
 </footer>
