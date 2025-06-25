@@ -1,220 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Loja Desportiva | Beatriz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Loja de Roupas Esportivas</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-    }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    header {
-      background-color: #111;
-      color: white;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+        /* Cabeçalho */
+        header {
+            background-color: #0d6efd; /* azul vibrante */
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
 
-    header h1 {
-      font-size: 24px;
-      color: #00ff88;
-    }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
 
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 600;
-    }
+        nav {
+            margin-top: 10px;
+        }
 
-    .hero {
-      background: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 1px 1px 5px #000;
-      text-align: center;
-      padding: 20px;
-    }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
 
-    .hero h2 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
+        nav a:hover {
+            color: #ffc107; /* amarelo dourado */
+        }
 
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
+        /* Seção de destaque */
+        .banner {
+            background-image: url('https://images.unsplash.com/photo-1593642532973-d31b6557fa68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            text-align: center;
+        }
 
-    .hero a {
-      background-color: #00ff88;
-      padding: 15px 30px;
-      border-radius: 8px;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .banner h2 {
+            font-size: 3em;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
 
-    .section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+        /* Seção de produtos */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+        }
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 32px;
-    }
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
 
-    .card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
 
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
+        .product-info {
+            padding: 15px;
+        }
 
-    .card h3 {
-      margin: 15px 0 5px;
-    }
+        .product-info h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
 
-    .card p {
-      margin: 5px 0 15px;
-    }
+        .product-info p {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
 
-    .card .price {
-      color: #00bb55;
-      font-weight: bold;
-      font-size: 18px;
-    }
+        .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #e67e22;
+        }
 
-    .card a {
-      display: inline-block;
-      margin-bottom: 15px;
-      background: #00ff88;
-      color: #000;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
+        /* Botão de compra */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0d6efd;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
 
-    .benefits {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      text-align: center;
-    }
+        .btn:hover {
+            background-color: #0069d9;
+        }
 
-    .benefit {
-      flex: 1 1 200px;
-      background: #111;
-      color: white;
-      padding: 30px;
-      border-radius: 10px;
-    }
+        /* Rodapé */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
 
-    footer {
-      background-color: #111;
-      color: #aaa;
-      padding: 30px;
-      text-align: center;
-      font-size: 14px;
-    }
-  </style>
+        /* Responsividade */
+        @media(max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .banner h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Loja Esportiva</h1>
+        <nav>
+            <a href="#home">Início</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
 
-  <header>
-    <h1>Beatriz Sports</h1>
-    <nav>
-      <a href="#produtos">Produtos</a>
-      <a href="#vantagens">Vantagens</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+    <section class="banner" id="home">
+        <h2>Vista-se para a vitória!</h2>
+    </section>
 
-  <section class="hero">
-    <div>
-      <h2>Estilo e Performance em Campo</h2>
-      <p>Descobre as melhores camisolas, chuteiras e fatos de treino para dominar o jogo.</p>
-      <a href="#produtos">Ver Produtos</a>
-    </div>
-  </section>
+    <section class="products" id="produtos">
+        <!-- Produto 1 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1612831455547-81c84d4b7d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camisa de Futebol">
+            <div class="product-info">
+                <h3>Camisa de Futebol</h3>
+                <p>Camisa oficial de time, confortável e estilosa.</p>
+                <p class="price">€39,99</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+        </div>
+        <!-- Produto 2 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1590073697342-9d3e3b6b730a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chuteira">
+            <div class="product-info">
+                <h3>Chuteira de Futebol</h3>
+                <p>Chuteira leve e com excelente aderência.</p>
+                <p class="price">€59,99</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+        </div>
+        <!-- Produto 3 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1570571746038-3b9f0d6a3f7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fato de Treino">
+            <div class="product-info">
+                <h3>Fato de Treino</h3>
+                <p>Fato confortável para treinos diários.</p>
+                <p class="price">€49,99</p>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+        </div>
+        <!-- Adicione mais produtos conforme necessário -->
+    </section>
 
-  <section class="section" id="produtos">
-    <h2>Produtos em Destaque</h2>
-    <div class="products">
+    <section id="sobre" style="padding:40px; text-align:center;">
+        <h2>Sobre Nós</h2>
+        <p>Somos uma loja dedicada a fornecer roupas esportivas de alta qualidade para atletas e entusiastas do esporte. Nosso objetivo é oferecer produtos modernos, confortáveis e acessíveis.</p>
+    </section>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=Camisola+de+Futebol" alt="Camisola">
-        <h3>Camisola de Futebol</h3>
-        <p class="price">€24,90</p>
-        <a href="https://wa.me/351912345678" target="_blank">Comprar</a>
-      </div>
+    <section id="contato" style="padding:40px; text-align:center;">
+        <h2>Contato</h2>
+        <p>Email: contato@lojaesportiva.com</p>
+        <p>Telefone: +351 912 345 678</p>
+        <p>Endereço: Rua do Esporte, 123, Lisboa</p>
+    </section>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=Chuteiras" alt="Chuteiras">
-        <h3>Chuteiras Profissionais</h3>
-        <p class="price">€49,90</p>
-        <a href="https://wa.me/351912345678" target="_blank">Comprar</a>
-      </div>
-
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=Fato+de+Treino" alt="Fato de Treino">
-        <h3>Fato de Treino</h3>
-        <p class="price">€39,90</p>
-        <a href="https://wa.me/351912345678" target="_blank">Comprar</a>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section" id="vantagens">
-    <h2>Por que comprar connosco?</h2>
-    <div class="benefits">
-      <div class="benefit">✅ Qualidade garantida</div>
-      <div class="benefit">🚚 Envio rápido para todo o país</div>
-      <div class="benefit">💬 Atendimento personalizado via WhatsApp</div>
-    </div>
-  </section>
-
-  <footer id="contacto">
-    <p>Entre em contacto: <a href="https://wa.me/351912345678" style="color: #00ff88;">WhatsApp</a> | Instagram: @beatrizsports</p>
-    <p>&copy; 2025 Beatriz Sports. Todos os direitos reservados.</p>
-  </footer>
-
+    <footer>
+        <p>&copy; 2024 Loja Esportiva. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
