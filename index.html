@@ -16,34 +16,35 @@
 
   body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #111;
-    color: #fff;
+    background-color: #f5f8fa;
+    color: #333;
     line-height: 1.6;
   }
 
-  /* Cabeçalho com logo e menu minimalista */
+  /* Cabeçalho com menu minimalista */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(17, 17, 17, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 999;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 header h1 {
   font-size: 2em;
   font-weight: 700;
-  color: #00cfff;
-  letter-spacing: 2px;
+  color: #4CAF50; /* Verde suave, relacionado a esportes e saúde */
+  letter-spacing: 1px;
 }
 
 nav a {
-  color: #fff;
+  color: #555;
   text-decoration: none;
   margin-left: 25px;
   font-weight: 600;
@@ -52,20 +53,20 @@ nav a {
 }
 
 nav a:hover {
-  color: #00cfff;
+  color: #4CAF50; /* Verde suave ao passar o mouse */
   transform: scale(1.05);
 }
 
-/* Espaço para compensar o header fixo */
+/* Espaço compensatório para o header fixo */
 .spacer {
   height: 80px;
 }
 
-/* Seção hero - impacto visual */
+/* Seção hero impactante e suave */
 section.hero {
   height: 100vh;
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                    url('https://images.unsplash.com/photo-1593642532973-d31b6557fa68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                    url('https://images.unsplash.com/photo-1612831455547-81c84d4b7d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -73,15 +74,14 @@ section.hero {
   justify-content: center;
   text-align: center;
   padding: 0 20px;
-  position: relative;
 }
 
 .hero-content {
   max-width: 900px;
   padding: 20px;
-  backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.3);
+  background: rgba(255,255,255,0.8);
   border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   animation: fadeInUp 1s ease-out;
 }
 
@@ -91,21 +91,21 @@ section.hero {
 }
 
 .hero h1 {
-  font-size: 3em;
+  font-size: 2.8em;
   margin-bottom: 20px;
-  color: #fff;
+  color: #2E7D32; /* Verde escuro, forte e esportivo */
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .hero p {
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-bottom: 30px;
-  color: #ddd;
+  color: #555;
 }
 
 .btn-primary {
-  background-color: #00cfff;
+  background-color: #4CAF50; /* Verde esportivo */
   padding: 20px 40px;
   border-radius: 50px;
   font-size: 1.3em;
@@ -116,21 +116,21 @@ section.hero {
 }
 
 .btn-primary:hover {
-  background-color: #0099cc;
+  background-color: #388E3C; /* Verde mais escuro ao passar o mouse */
   transform: scale(1.05);
 }
 
-/* Seção destaque de produtos ou promoções */
+/* Seção destaque com tema esportivo */
 section.destaque {
   padding: 60px 20px;
-  background-color: #222;
+  background-color: #FAFAFA;
   text-align: center;
 }
 
 section.destaque h2 {
   font-size: 2.8em;
   margin-bottom: 30px;
-  color: #fff;
+  color: #2E7D32;
   font-weight: 700;
 }
 
@@ -142,17 +142,18 @@ section.destaque h2 {
 }
 
 .card {
-  background: #333;
+  background: #fff;
   border-radius: 15px;
   overflow: hidden;
   width: 300px;
   transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   cursor: pointer;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .card img {
@@ -164,37 +165,37 @@ section.destaque h2 {
 .card h3 {
   margin: 15px;
   font-size: 1.5em;
-  color: #fff;
+  color: #333;
 }
 
 .card p {
   margin: 0 15px 15px;
   font-size: 1em;
-  color: #ccc;
+  color: #555;
 }
 
 /* Seção chamada para ação */
 section.cta {
   padding: 60px 20px;
-  background-color: #111;
+  background-color: #E8F5E9; /* Verde claro e suave */
   text-align: center;
 }
 
 .cta h2 {
   font-size: 2.8em;
   margin-bottom: 20px;
-  color: #00cfff;
+  color: #2E7D32;
   font-weight: 700;
 }
 
 .cta p {
   font-size: 1.2em;
   margin-bottom: 30px;
-  color: #ddd;
+  color: #555;
 }
 
 .btn-cta {
-  background-color: #00cfff;
+  background-color: #66BB6A; /* Verde mais suave */
   padding: 20px 50px;
   border-radius: 50px;
   font-size: 1.4em;
@@ -205,17 +206,16 @@ section.cta {
 }
 
 .btn-cta:hover {
-  background-color: #0099cc;
+  background-color: #558b2f;
   transform: scale(1.05);
 }
 
-/* Rodapé */
+/* Rodapé com cores suaves */
 footer {
-  background: #222;
+  background: #3E3E3E;
   color: #ccc;
   padding: 40px 20px;
   text-align: center;
-  margin-top: 40px;
 }
 
 footer p {
@@ -224,14 +224,14 @@ footer p {
 }
 
 footer a {
-  color: #ccc;
+  color: #4CAF50;
   margin: 0 8px;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 footer a:hover {
-  color: #fff;
+  color: #81C784;
 }
 
 /* Responsividade */
@@ -269,7 +269,7 @@ footer a:hover {
 </head>
 <body>
 
-<!-- Cabeçalho com menu -->
+<!-- Cabeçalho -->
 <header>
   <h1>Vença com Estilo</h1>
   <nav>
@@ -281,33 +281,33 @@ footer a:hover {
 </header>
 <div class="spacer"></div>
 
-<!-- Seção Hero com imagem impactante -->
+<!-- Seção Hero Impactante -->
 <section class="hero" id="hero">
   <div class="hero-content">
-    <h1>Transforme seu Jogo, Supere Seus Limites</h1>
-    <p>Produtos esportivos que elevam seu desempenho e estilo ao máximo</p>
+    <h1>Superando Limites, Inspirando Resultados</h1>
+    <p>Produtos esportivos que elevam sua performance e seu estilo de vida</p>
     <a href="#destaque" class="btn-primary">Confira Agora</a>
   </div>
 </section>
 
-<!-- Destaques ou promoções -->
+<!-- Destaques de Produtos e Valores -->
 <section class="destaque" id="destaque">
-  <h2>Nosso Compromisso com Você</h2>
+  <h2>A Força do Esporte ao Seu Alcance</h2>
   <div class="cards">
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1612831455547-81c84d4b7d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camisa esportiva" />
-      <h3>Roupas de Alta Performance</h3>
-      <p>Conforto, estilo e resistência para treinos intensos.</p>
+      <img src="https://images.unsplash.com/photo-1612831455547-81c84d4b7d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Roupas esportivas" />
+      <h3>Roupas com Tecnologia</h3>
+      <p>Conforto e resistência para alcançar seu melhor desempenho.</p>
     </div>
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1590073697342-9d3e3b6b730a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tênis esportivo" />
-      <h3>Calçados que Aceleram Seus Passos</h3>
+      <img src="https://images.unsplash.com/photo-1590073697342-9d3e3b6b730a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Calçados esportivos" />
+      <h3>Calçados de Alta Velocidade</h3>
       <p>Leveza e aderência para vencer qualquer percurso.</p>
     </div>
     <div class="card">
       <img src="https://images.unsplash.com/photo-1570571746038-3b9f0d6a3f7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Acessórios esportivos" />
-      <h3>Acessórios que Fazem a Diferença</h3>
-      <p>De bonés a luvas, tudo para completar seu look esportivo.</p>
+      <h3>Acessórios Essenciais</h3>
+      <p>De bonés a equipamentos, tudo para seu melhor desempenho.</p>
     </div>
   </div>
 </section>
@@ -315,21 +315,21 @@ footer a:hover {
 <!-- Chamada para ação final -->
 <section class="cta" id="sobre">
   <h2>Pronto Para Vencer?</h2>
-  <p>Transforme seu desempenho com nossos produtos de qualidade superior. Faça parte do time que busca sempre o melhor!</p>
+  <p>Eleve sua performance com produtos de alta qualidade. Faça parte do time que busca sempre o melhor!</p>
   <a href="#contato" class="btn-cta">Entre em Contato</a>
 </section>
 
 <!-- Contato -->
-<section id="contato" style="padding: 60px 20px; background-color: #111; color: #ccc; text-align: center;">
-  <h2 style="font-size: 2.8em; margin-bottom: 20px;">Fale Conosco</h2>
-  <p>Email: <a href="mailto:contato@lojaesportiva.com" style="color:#00cfff;">contato@lojaesportiva.com</a></p>
+<section id="contato" style="padding: 60px 20px; background-color: #f5f8fa; color: #333; text-align: center;">
+  <h2 style="font-size: 2.8em; margin-bottom: 20px; color: #4CAF50;">Fale Conosco</h2>
+  <p>Email: <a href="mailto:contato@lojaesportiva.com" style="color:#4CAF50;">contato@lojaesportiva.com</a></p>
   <p>Telefone: +351 912 345 678</p>
   <p>Endereço: Rua do Esporte, 123, Lisboa</p>
 </section>
 
 <!-- Rodapé -->
 <footer>
-  <p>&copy; 2024 Venca com Estilo. Todos os direitos reservados.</p>
+  <p>&copy; 2024 Vença com Estilo. Todos os direitos reservados.</p>
   <p>
     Siga-nos nas redes sociais: 
     <a href="#">Facebook</a> | 
