@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Loja Esportiva Premium</title>
-<!-- Google Fonts -->
+<title>Loja Esportiva Moderna</title>
+<!-- Fonte do Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
 
 <style>
@@ -17,60 +17,58 @@
 
   body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #fafafa;
+    background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
   }
 
-  /* Cabeçalho fixo com efeito */
+  /* Cabeçalho fixo minimalista e elegante */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: linear-gradient(135deg, #0d6efd, #0069d9);
-  padding: 20px 40px;
+  background: #fff;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   z-index: 999;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  transition: background 0.3s, padding 0.3s;
+  transition: all 0.3s ease;
 }
 
 header h1 {
-  color: #fff;
-  font-size: 2.2em;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  font-size: 1.8em;
+  color: #0d6efd;
 }
 
 nav {
   display: flex;
-  gap: 25px;
+  gap: 20px;
 }
 
 nav a {
-  color: #fff;
   text-decoration: none;
+  color: #555;
   font-weight: 600;
-  padding: 10px 15px;
-  border-radius: 6px;
-  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s;
 }
 
 nav a:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #0d6efd;
+  color: #fff;
 }
 
-/* Espaço para compensar o header fixo */
+/* Espaço para compensar o header */
 .spacer {
   height: 80px;
 }
 
-/* Banner principal com efeito de fundo e animação */
-.hero {
+/* Banner principal com fundo de imagem e texto centrado */
+section.hero {
   height: 100vh;
   background-image: url('https://images.unsplash.com/photo-1593642532973-d31b6557fa68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
   background-size: cover;
@@ -78,108 +76,100 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
   position: relative;
-  color: #fff;
   text-align: center;
-  overflow: hidden;
+  padding: 0 20px;
 }
 
-.hero::after {
+section.hero::after {
   content: "";
   position: absolute;
   top:0; left:0; right:0; bottom:0;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.4);
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  color: #fff;
   max-width: 900px;
+  z-index: 1;
   padding: 20px;
   animation: fadeIn 1s ease-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .hero h1 {
   font-size: 3em;
-  margin-bottom: 20px;
   font-weight: 700;
-  letter-spacing: 2px;
+  margin-bottom: 20px;
 }
 
 .hero p {
-  font-size: 1.6em;
+  font-size: 1.5em;
   margin-bottom: 30px;
 }
 
 .btn-primary {
-  background-color: #ffc107;
-  color: #222;
-  padding: 16px 40px;
+  background-color: #0d6efd;
+  padding: 15px 30px;
   border-radius: 50px;
-  font-size: 1.3em;
-  font-weight: 600;
-  cursor: pointer;
+  font-size: 1.2em;
+  color: #fff;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-weight: 600;
   transition: background 0.3s, transform 0.3s;
 }
 
 .btn-primary:hover {
-  background-color: #e0a800;
+  background-color: #0069d9;
   transform: translateY(-2px);
 }
 
 /* Seção de Produtos */
-#produtos {
-  padding: 80px 20px;
-  background-color: #fff;
+section#produtos {
+  padding: 60px 20px;
+  background: #fff;
 }
 
-#produtos h2 {
+section#produtos h2 {
   text-align: center;
-  font-size: 3em;
-  margin-bottom: 60px;
-  font-weight: 700;
+  font-size: 2.8em;
+  margin-bottom: 50px;
   color: #222;
-  letter-spacing: 1px;
+  font-weight: 700;
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  padding: 0 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
 
 .product-card {
-  background: #fff;
-  border-radius: 20px;
+  background: #fafafa;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  transition: transform 0.4s, box-shadow 0.4s;
-  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
-  height: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 }
 
 .product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .product-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  transition: transform 0.4s;
+  transition: transform 0.3s;
 }
 
 .product-card:hover img {
@@ -187,7 +177,7 @@ nav a:hover {
 }
 
 .product-info {
-  padding: 25px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -195,8 +185,8 @@ nav a:hover {
 }
 
 .product-title {
-  font-size: 1.7em;
-  margin-bottom: 12px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
   font-weight: 700;
   color: #222;
 }
@@ -204,7 +194,7 @@ nav a:hover {
 .product-desc {
   font-size: 1em;
   color: #555;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   flex-grow: 1;
 }
 
@@ -217,12 +207,12 @@ nav a:hover {
 
 .btn-shop {
   background-color: #0d6efd;
-  color: #fff;
-  padding: 14px 30px;
+  padding: 12px 24px;
   border-radius: 50px;
   text-align: center;
-  text-decoration: none;
+  color: #fff;
   font-weight: 600;
+  text-decoration: none;
   transition: background 0.3s, transform 0.3s;
 }
 
@@ -231,68 +221,51 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-/* Seções adicionais: Sobre, Contato */
-section {
-  padding: 80px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
+/* Sobre e Contato */
+section#sobre, section#contato {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
 }
 
 section h2 {
-  font-size: 3em;
+  font-size: 2.8em;
   margin-bottom: 30px;
-  font-weight: 700;
   color: #222;
-  letter-spacing: 1px;
+  font-weight: 700;
+  text-align: center;
 }
 
 section p {
   font-size: 1.2em;
-  line-height: 1.8;
-  color: #555;
-  margin: 0 auto 30px;
-  max-width: 800px;
-}
-
-/* Sobre e Contato */
-#sobre, #contato {
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  padding: 60px 40px;
-  transition: box-shadow 0.3s;
-}
-
-#sobre:hover, #contato:hover {
-  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
-}
-
-#sobre p, #contato p {
-  margin: 0 auto 30px;
-  max-width: 800px;
-  font-size: 1.2em;
   line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 20px;
   color: #555;
+  text-align: center;
 }
 
 /* Rodapé */
 footer {
-  background-color: #222;
+  background: #222;
   color: #ccc;
-  padding: 50px 20px;
+  padding: 40px 20px;
   text-align: center;
-  margin-top: 50px;
-  font-size: 0.9em;
+  margin-top: 60px;
 }
 
 footer p {
   margin-bottom: 10px;
+  font-size: 0.9em;
 }
 
 footer a {
   color: #ccc;
-  margin: 0 10px;
+  margin: 0 8px;
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -301,7 +274,7 @@ footer a:hover {
   color: #fff;
 }
 
-/* Responsividade avançada */
+/* Responsividade */
 @media(max-width: 768px) {
   header {
     flex-direction: column;
@@ -315,22 +288,22 @@ footer a:hover {
     width: 100%;
     padding: 12px;
   }
-  .hero h1 {
+  section.hero h1 {
     font-size: 2em;
   }
   .btn-primary {
-    padding: 14px 30px;
+    padding: 12px 24px;
     font-size: 1em;
   }
-  #produtos h2 {
-    font-size: 2.2em;
+  section h2 {
+    font-size: 2em;
   }
 }
 </style>
 </head>
 <body>
 
-<!-- Cabeçalho fixo com menu -->
+<!-- Cabeçalho com navegação -->
 <header>
   <h1>Loja Esportiva</h1>
   <nav>
@@ -342,16 +315,16 @@ footer a:hover {
 </header>
 <div class="spacer"></div>
 
-<!-- Banner principal com efeito visual -->
+<!-- Banner com imagem de fundo e texto -->
 <section class="hero" id="home">
   <div class="hero-content">
     <h1>Vença com Estilo</h1>
-    <p>Produtos esportivos de alta qualidade para atletas e entusiastas.</p>
+    <p>Produtos esportivos de alta qualidade para atletas e entusiastas</p>
     <a href="#produtos" class="btn-primary">Ver Produtos</a>
   </div>
 </section>
 
-<!-- Seção de Produtos -->
+<!-- Produtos -->
 <section id="produtos">
   <h2>Nossos Produtos</h2>
   <div class="products-grid">
@@ -369,7 +342,7 @@ footer a:hover {
     <div class="product-card">
       <img src="https://images.unsplash.com/photo-1590073697342-9d3e3b6b730a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chuteira" />
       <div class="product-info">
-        <h3 class="product-title">Chuteira de Futebol</h3>
+        <h3 class="product-title">Chuteira</h3>
         <p class="product-desc">Leve, com excelente aderência para melhorar seu desempenho.</p>
         <div class="price">€59,99</div>
         <a href="#" class="btn-shop">Comprar</a>
@@ -388,7 +361,7 @@ footer a:hover {
   </div>
 </section>
 
-<!-- Sobre Nós -->
+<!-- Sobre -->
 <section id="sobre">
   <h2>Sobre Nós</h2>
   <p>Somos uma loja dedicada a oferecer roupas e acessórios esportivos de alta qualidade. Nosso compromisso é proporcionar produtos modernos, confortáveis e acessíveis para atletas e entusiastas do esporte. Venha treinar, jogar e vencer com estilo!</p>
