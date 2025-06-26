@@ -21,31 +21,32 @@
     color: #333;
   }
 
-  /* Botão menu hambúrguer */
+  /* Botão menu hamburguer */
   #menuHamburguer {
     position: fixed;
-    top: 15px;
+    top: 25%; /* mais para baixo */
     left: 15px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background-color: #222; /* fundo preto */
-    border-radius: 5px;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     cursor: pointer;
     z-index: 1100;
-    padding: 4px;
+    padding: 6px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
   }
   #menuHamburguer:hover {
     background-color: #444;
+    transform: scale(1.05);
   }
   #menuHamburguer div {
-    width: 20px;
-    height: 2px;
+    width: 30px;
+    height: 3px;
     background-color: #fff;
   }
 
@@ -87,77 +88,65 @@
     color: #999;
   }
 
-  /* Imagem de destaque */
-  #destaque {
+  /* Cabeçalho estilizado */
+.header-top {
     width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* Conteúdo principal com margens ajustadas */
-  #conteudoPrincipal {
-    display: none; /* inicialmente escondido */
-    margin-left: 0;
-    padding: 20px;
-    transition: margin-left 0.3s ease;
-  }
-  #conteudoPrincipal.show {
-    display: block;
-  }
-  @media(min-width: 769px){
-    #conteudoPrincipal {
-      margin-left: 250px;
-    }
-  }
-
-  /* Navbar fixa superior */
-  .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
+    padding: 15px 20px;
     background: linear-gradient(90deg, #ff416c, #ff4b2b);
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 15px 30px;
+    justify-content: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 0;
     z-index: 1000;
   }
-  .navbar h1 {
+.header-top h1 {
     margin: 0;
-    font-size: 2em;
+    font-size: 2.5em;
     color: #fff;
     letter-spacing: 2px;
-  }
-  #auth-section {
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+#auth-section {
     margin-left: auto;
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-  #auth-section button {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1em;
-    transition: all 0.3s ease;
-    background-color: #ff6f61;
-    color: #fff;
-  }
-  #auth-section button:hover {
-    background-color: #ff3b2e;
-    transform: scale(1.05);
-  }
+}
 
-  /* Espaço para o cabeçalho fixo */
-  .spacer {
-    height: 80px;
-  }
+/* Espaço para evitar sobreposição do conteúdo com o cabeçalho fixo */
+.spacer {
+    height: 100px; /* mais espaço para o cabeçalho maior */
+}
 
-  /* Seções e títulos */
+/* Imagem de destaque */
+#destaque {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+    margin-top: 0; /* já ajustado pelo spacer */
+}
+
+/* Conteúdo principal com margens ajustadas */
+#conteudoPrincipal {
+    display: none; /* inicialmente escondido */
+    margin-left: 0;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+#conteudoPrincipal.show {
+    display: block;
+}
+@media(min-width: 769px){
+    #conteudoPrincipal {
+        margin-left: 250px;
+    }
+}
+
+/* Seções e títulos */
 section {
   padding: 80px 20px;
   max-width: 1600px;
@@ -259,7 +248,7 @@ h2 {
   transform: scale(1.02);
 }
 
-/* Modal estilos */
+/* Modais */
 #auth-modal, #cart-modal {
   display: none;
   position: fixed;
@@ -278,6 +267,7 @@ h2 {
   width: 100%;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   animation: fadeIn 0.4s ease;
+  position: relative;
 }
 #auth-close, #cart-close {
   position: absolute;
@@ -286,9 +276,11 @@ h2 {
   font-size: 28px;
   cursor: pointer;
   color: #555;
+  transition: color 0.2s, transform 0.2s;
 }
 #auth-close:hover, #cart-close:hover {
   color: #222;
+  transform: scale(1.1);
 }
 h3 {
   margin-bottom: 30px;
@@ -377,6 +369,8 @@ button:hover {
   background-color: #219150;
   transform: scale(1.02);
 }
+
+/* Rodapé */
 footer {
   background-color: #222;
   color: #fff;
@@ -391,7 +385,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Animação fadeIn */
+/* Animação de fadeIn */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -400,7 +394,15 @@ footer a:hover {
 </head>
 <body>
 
-<!-- Botão menu hamburguer com fundo preto -->
+<!-- Barra superior com o nome da loja -->
+<div class="header-top">
+  <h1>Loja Futebol Top</h1>
+  <div id="auth-section">
+    <button id="loginBtn">Login / Registrar</button>
+  </div>
+</div>
+
+<!-- Botão menu com fundo preto, mais para baixo -->
 <div id="menuHamburguer" title="Menu">
   <div></div>
   <div></div>
@@ -425,21 +427,11 @@ footer a:hover {
   </ul>
 </div>
 
-<!-- Imagem de destaque escura -->
+<!-- Imagem inicial escura -->
 <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" id="destaque" />
 
 <!-- Conteúdo principal escondido inicialmente -->
 <div id="conteudoPrincipal">
-
-  <!-- Navbar fixa -->
-  <div class="navbar">
-    <h1>Loja Futebol Top</h1>
-    <div id="auth-section">
-      <button id="loginBtn">Login / Registrar</button>
-    </div>
-  </div>
-
-  <div class="spacer"></div>
 
   <!-- Seção Produtos -->
   <section id="products">
@@ -528,26 +520,23 @@ footer a:hover {
     const conteudo = document.getElementById('conteudoPrincipal');
     const menuLateral = document.getElementById('menuLateral');
 
-    // Função para esconder destaque e mostrar conteúdo
+    // Mostrar conteúdo
     function mostrarConteudo() {
       destaque.style.display = 'none';
       conteudo.style.display = 'block';
     }
-
-    // Exibir conteúdo após carregamento
     mostrarConteudo();
 
-    // Menu hambúrguer
+    // Atualmente o menu lateral
     const menuBtn = document.getElementById('menuHamburguer');
     menuBtn.onclick = () => {
       document.getElementById('menuLateral').classList.toggle('aberto');
     };
 
-    // Filtros
+    // Filtros e busca
     const filtroCategoria = document.getElementById('categoryFilter');
     const filtroMarca = document.getElementById('brandFilter');
     const buscaTexto = document.getElementById('searchInput');
-
     const containerProdutos = document.getElementById('productsContainer');
     const authSection = document.getElementById('auth-section');
 
@@ -747,6 +736,12 @@ footer a:hover {
     document.getElementById('menuHamburguer').onclick = () => {
       document.getElementById('menuLateral').classList.toggle('aberto');
     };
+
+    // Mostrar conteúdo ao carregar
+    const destaque = document.getElementById('destaque');
+    const conteudo = document.getElementById('conteudoPrincipal');
+    destaque.style.display = 'none';
+    conteudo.style.display = 'block';
   });
 </script>
 
