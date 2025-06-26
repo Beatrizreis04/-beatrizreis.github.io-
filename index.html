@@ -6,8 +6,9 @@
 <title>Loja Futebol Top - Melhorada</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
 
+<!-- Estilos CSS -->
 <style>
   * {
     box-sizing: border-box;
@@ -20,68 +21,44 @@
     color: #333;
   }
 
-  /* Cabeçalho com nome da loja */
-  .header-top {
-    width: 100%;
-    padding: 20px 40px;
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .header-top h1 {
-    margin: 0;
-    font-size: 2.8em;
-    color: #fff;
-    letter-spacing: 2px;
-    font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  }
-
-  /* Botão menu com fundo preto, mais centralizado */
+  /* Botão menu hambúrguer */
   #menuHamburguer {
     position: fixed;
-    top: calc(20% + 20px); /* mais para baixo, ajustando para ficar mais harmonioso */
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #222;
-    border-radius: 8px;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: #222; /* fundo preto */
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     cursor: pointer;
     z-index: 1100;
-    padding: 6px;
+    padding: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s;
   }
   #menuHamburguer:hover {
     background-color: #444;
-    transform: scale(1.05);
   }
   #menuHamburguer div {
-    width: 30px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     background-color: #fff;
   }
 
-  /* Menu lateral escondido */
+  /* Menu lateral oculto */
   #menuLateral {
     position: fixed;
     top: 0;
-    left: -250px;
+    left: -250px; /* escondido por padrão */
     width: 250px;
     height: 100%;
     background-color: #fff;
     box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-    padding-top: 80px;
+    padding-top: 60px;
     transition: left 0.3s ease;
     z-index: 1099;
     overflow-y: auto;
@@ -110,24 +87,20 @@
     color: #999;
   }
 
-  /* Imagem destaque com sombra mais suave */
+  /* Imagem de destaque */
   #destaque {
     width: 100%;
     max-height: 300px;
     object-fit: cover;
     display: block;
-    margin-top: 80px; /* espaço para o cabeçalho fixo */
-    filter: brightness(0.7);
   }
 
-  /* Conteúdo principal */
+  /* Conteúdo principal com margens ajustadas */
   #conteudoPrincipal {
-    display: none; /* escondido inicialmente */
+    display: none; /* inicialmente escondido */
+    margin-left: 0;
     padding: 20px;
-    margin-top: 20px;
-    max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
+    transition: margin-left 0.3s ease;
   }
   #conteudoPrincipal.show {
     display: block;
@@ -138,16 +111,64 @@
     }
   }
 
+  /* Navbar fixa superior */
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+  .navbar h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  #auth-section {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  #auth-section button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background-color: #ff6f61;
+    color: #fff;
+  }
+  #auth-section button:hover {
+    background-color: #ff3b2e;
+    transform: scale(1.05);
+  }
+
+  /* Espaço para o cabeçalho fixo */
+  .spacer {
+    height: 80px;
+  }
+
   /* Seções e títulos */
 section {
   padding: 80px 20px;
+  max-width: 1600px;
+  margin: auto;
 }
 h2 {
   text-align: center;
   margin-bottom: 50px;
-  font-size: 2.8em;
+  font-size: 3em;
   color: #fff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
 /* Filtros */
@@ -198,6 +219,10 @@ h2 {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  transition: transform 0.3s;
+}
+.product-image:hover {
+  transform: scale(1.02);
 }
 .product-info {
   padding: 20px;
@@ -234,7 +259,7 @@ h2 {
   transform: scale(1.02);
 }
 
-/* Modais */
+/* Modal estilos */
 #auth-modal, #cart-modal {
   display: none;
   position: fixed;
@@ -252,7 +277,6 @@ h2 {
   max-width: 600px;
   width: 100%;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  position: relative;
   animation: fadeIn 0.4s ease;
 }
 #auth-close, #cart-close {
@@ -262,7 +286,6 @@ h2 {
   font-size: 28px;
   cursor: pointer;
   color: #555;
-  transition: color 0.2s, transform 0.2s;
 }
 #auth-close:hover, #cart-close:hover {
   color: #222;
@@ -280,6 +303,8 @@ input[type=text], input[type=password] {
   margin-bottom: 25px;
   border-radius: 10px;
   border: 1px solid #ccc;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
 }
 button {
   width: 100%;
@@ -352,8 +377,6 @@ button:hover {
   background-color: #219150;
   transform: scale(1.02);
 }
-
-/* Rodapé */
 footer {
   background-color: #222;
   color: #fff;
@@ -377,19 +400,14 @@ footer a:hover {
 </head>
 <body>
 
-<!-- Barra superior com nome da loja -->
-<div class="header-top">
-  <h1>Loja Futebol Top</h1>
-</div>
-
-<!-- Botão menu mais centralizado e mais para baixo -->
+<!-- Botão menu hamburguer com fundo preto -->
 <div id="menuHamburguer" title="Menu">
   <div></div>
   <div></div>
   <div></div>
 </div>
 
-<!-- Menu lateral oculto -->
+<!-- Menu lateral escondido -->
 <div id="menuLateral">
   <ul>
     <li>Página Inicial</li>
@@ -407,11 +425,21 @@ footer a:hover {
   </ul>
 </div>
 
-<!-- Imagem de destaque -->
+<!-- Imagem de destaque escura -->
 <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" id="destaque" />
 
 <!-- Conteúdo principal escondido inicialmente -->
 <div id="conteudoPrincipal">
+
+  <!-- Navbar fixa -->
+  <div class="navbar">
+    <h1>Loja Futebol Top</h1>
+    <div id="auth-section">
+      <button id="loginBtn">Login / Registrar</button>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
 
   <!-- Seção Produtos -->
   <section id="products">
@@ -478,6 +506,7 @@ footer a:hover {
   </div>
 </div>
 
+<!-- Scripts -->
 <script>
   // Variáveis globais
   const produtos = [
@@ -493,29 +522,51 @@ footer a:hover {
 
   let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
+  // Quando a página carregar
   document.addEventListener("DOMContentLoaded", () => {
     const destaque = document.getElementById('destaque');
     const conteudo = document.getElementById('conteudoPrincipal');
+    const menuLateral = document.getElementById('menuLateral');
 
-    // Mostrar conteúdo
-    destaque.style.display = 'none'; 
-    conteudo.classList.add('show');
+    // Função para esconder destaque e mostrar conteúdo
+    function mostrarConteudo() {
+      destaque.style.display = 'none';
+      conteudo.style.display = 'block';
+    }
 
-    // Menu lateral
-    document.getElementById('menuHamburguer').onclick = () => {
+    // Exibir conteúdo após carregamento
+    mostrarConteudo();
+
+    // Menu hambúrguer
+    const menuBtn = document.getElementById('menuHamburguer');
+    menuBtn.onclick = () => {
       document.getElementById('menuLateral').classList.toggle('aberto');
     };
 
-    // Login/Registrar
+    // Filtros
+    const filtroCategoria = document.getElementById('categoryFilter');
+    const filtroMarca = document.getElementById('brandFilter');
+    const buscaTexto = document.getElementById('searchInput');
+
+    const containerProdutos = document.getElementById('productsContainer');
     const authSection = document.getElementById('auth-section');
+
+    // Modal
     const authModal = document.getElementById('auth-modal');
     const authClose = document.getElementById('auth-close');
+    const authTitle = document.getElementById('auth-title');
+    const authUsername = document.getElementById('auth-username');
+    const authPassword = document.getElementById('auth-password');
+    const authButton = document.getElementById('auth-submit');
+    const authSwitchLink = document.getElementById('switchAuth');
+
+    let modoAuth = true; // login ou registrar
 
     function verificarLogin() {
-      const user = localStorage.getItem('user');
-      if (user) {
+      const usuario = localStorage.getItem('user');
+      if (usuario) {
         authSection.innerHTML = `
-          <span style="color:#fff; font-weight:600;">Olá, ${user}!</span>
+          <span style="color:#fff; font-weight:600;">Olá, ${usuario}!</span>
           <button id="logoutBtn">Logout</button>
         `;
         document.getElementById('logoutBtn').onclick = () => {
@@ -531,16 +582,18 @@ footer a:hover {
     }
 
     function mostrarModalAuth(isLogin) {
+      modoAuth = isLogin;
       document.getElementById('auth-title').textContent = isLogin ? 'Login' : 'Registrar-se';
       document.getElementById('auth-username').value = '';
       document.getElementById('auth-password').value = '';
+
       authSwitchLink.innerHTML = isLogin ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a>' : 'Já possui conta? <a href="#" id="switchAuth">Entrar</a>';
-      
+
       document.getElementById('switchAuth').onclick = (e) => {
         e.preventDefault();
         alternarModoAuth();
       };
-      
+
       document.getElementById('auth-modal').style.display = 'flex';
     }
 
@@ -548,7 +601,6 @@ footer a:hover {
       document.getElementById('auth-modal').style.display = 'none';
     };
 
-    let modoAuth = true; // true = login, false = registrar
     function alternarModoAuth() {
       mostrarModalAuth(!modoAuth);
     }
@@ -565,7 +617,7 @@ footer a:hover {
       let usuarios = JSON.parse(localStorage.getItem('usuarios')) || {};
 
       if (modoAuth) {
-        // Login
+        // login
         if (usuarios[usuario] && usuarios[usuario] === senha) {
           localStorage.setItem('user', usuario);
           alert('Login bem-sucedido!');
@@ -575,7 +627,7 @@ footer a:hover {
           alert('Credenciais inválidas.');
         }
       } else {
-        // Registrar
+        // registrar
         if (usuarios[usuario]) {
           alert('Este usuário já existe.');
         } else {
@@ -687,11 +739,11 @@ footer a:hover {
       });
     }
 
-    // Inicializar
+    // Inicializa
     verificarLogin();
     mostrarProdutos();
 
-    // Evento do menu lateral
+    // Controle do menu lateral ao clicar no ícone
     document.getElementById('menuHamburguer').onclick = () => {
       document.getElementById('menuLateral').classList.toggle('aberto');
     };
