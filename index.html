@@ -3,45 +3,45 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Loja Futebol Top - Login Funcional</title>
+<title>Loja Futebol Top - Moderno e Atraente</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
 
-<!-- Estilos CSS -->
+<!-- Estilos CSS aprimorados -->
 <style>
   *, *::before, *::after {
     box-sizing: border-box;
   }
+
   body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f0f2f5;
-    color: #222;
-    line-height: 1.6;
+    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
     margin: 0;
+    padding-top: 80px;
+    color: #333;
   }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  /* Cabeçalho */
+
+  /* Cabeçalho estiloso */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: linear-gradient(90deg, #222, #444);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  z-index: 9999;
+  padding: 20px 40px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 999;
   flex-wrap: wrap;
+  transition: background 0.3s ease;
 }
 header h1 {
   color: #fff;
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: 700;
+  letter-spacing: 2px;
 }
 nav {
   display: flex;
@@ -49,15 +49,16 @@ nav {
   gap: 20px;
 }
 nav a {
-  padding: 10px 15px;
-  background: rgba(255,255,255,0.1);
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.2);
   border-radius: 8px;
+  color: #fff;
   font-weight: 600;
   font-size: 1em;
   transition: background 0.3s, transform 0.2s;
 }
 nav a:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.4);
   transform: scale(1.05);
 }
 #auth-section {
@@ -66,64 +67,67 @@ nav a:hover {
   gap: 10px;
 }
 #auth-section button {
-  padding: 10px 20px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.3s, transform 0.2s;
+  font-size: 1em;
+  transition: all 0.3s ease;
 }
 #loginBtn {
-  background-color: #f4a261;
-  color: #222;
+  background-color: #ff6f61;
+  color: #fff;
 }
 #loginBtn:hover {
-  background-color: #e9a04b;
+  background-color: #ff3b2e;
   transform: scale(1.05);
 }
 #logoutBtn {
-  background-color: #e76f51;
+  background-color: #4CAF50;
   color: #fff;
 }
 #logoutBtn:hover {
-  background-color: #d65a43;
+  background-color: #388e3c;
   transform: scale(1.05);
 }
 .spacer {
   height: 100px;
 }
 section {
-  padding: 60px 20px;
-  max-width: 1400px;
+  padding: 80px 20px;
+  max-width: 1600px;
   margin: auto;
+  background-size: cover;
 }
 h2 {
   text-align: center;
-  margin-bottom: 40px;
-  color: #2a9d8f;
-  font-size: 2.5em;
-  font-weight: 700;
+  margin-bottom: 50px;
+  font-size: 3em;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 .filters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
   margin-bottom: 50px;
-  padding: 0 15px;
 }
 .filters select, .filters input {
   padding: 15px 20px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: none;
   font-family: 'Montserrat', sans-serif;
   font-size: 1em;
-  min-width: 200px;
+  min-width: 220px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 .filters select:focus, .filters input:focus {
-  border-color: #2a9d8f;
   outline: none;
-  box-shadow: 0 0 8px rgba(42,157,143,0.4);
+  box-shadow: 0 0 20px rgba(42,157,143,0.4);
+  transform: scale(1.02);
 }
 .products-grid {
   display: grid;
@@ -132,8 +136,8 @@ h2 {
 }
 .product-card {
   background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -141,7 +145,7 @@ h2 {
 }
 .product-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 .product-image {
   width: 100%;
@@ -176,7 +180,7 @@ h2 {
   background-color: #2a9d8f;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 1.2em;
   font-weight: 600;
   cursor: pointer;
@@ -186,14 +190,17 @@ h2 {
   background-color: #218c8f;
   transform: scale(1.02);
 }
+
+/* Modais estilizados */
 #auth-modal, #cart-modal {
   display: none;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0,0,0,0.75);
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  padding: 20px;
 }
 .modal-content {
   background: #fff;
@@ -202,10 +209,8 @@ h2 {
   max-width: 600px;
   width: 100%;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  animation: fadeIn 0.4s ease;
-  max-height: 90vh;
-  overflow-y: auto;
   position: relative;
+  animation: fadeIn 0.4s ease;
 }
 #auth-close, #cart-close {
   position: absolute;
@@ -235,11 +240,6 @@ input[type=text], input[type=password] {
   font-family: 'Montserrat', sans-serif;
   font-size: 1em;
 }
-input[type=text]:focus, input[type=password]:focus {
-  border-color: #2a9d8f;
-  box-shadow: 0 0 10px rgba(42,157,143,0.4);
-  outline: none;
-}
 button {
   width: 100%;
   padding: 15px;
@@ -250,6 +250,7 @@ button {
   font-size: 1.2em;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 button:hover {
   background-color: #218c8f;
@@ -266,6 +267,7 @@ button:hover {
   background: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
 }
 .cart-item:hover {
   transform: translateX(5px);
@@ -312,6 +314,7 @@ button:hover {
   background-color: #219150;
   transform: scale(1.02);
 }
+
 footer {
   background-color: #222;
   color: #fff;
@@ -325,6 +328,8 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+/* Responsividade */
 @media(max-width: 768px){
   header {
     flex-direction: column;
@@ -334,6 +339,8 @@ footer a:hover {
     margin-top: 10px;
   }
 }
+
+/* Animação fadeIn */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -351,15 +358,16 @@ footer a:hover {
     <a href="#" id="cartLink">Carrinho</a>
   </nav>
   <div id="auth-section">
-    <button id="loginBtn">Login</button>
+    <button id="loginBtn">Login / Registrar</button>
   </div>
 </header>
+
 <div class="spacer"></div>
 
 <!-- Modal Autenticação -->
 <div id="auth-modal">
-  <div class="modal-content" id="auth-form">
-    <div id="auth-close">&times;</div>
+  <div class="modal-content">
+    <div id="auth-close">×</div>
     <h3 id="auth-title">Login</h3>
     <input type="text" id="auth-username" placeholder="Nome de usuário" />
     <input type="password" id="auth-password" placeholder="Senha" />
@@ -371,7 +379,7 @@ footer a:hover {
 <!-- Modal Carrinho -->
 <div id="cart-modal">
   <div class="modal-content">
-    <div id="cart-close">&times;</div>
+    <div id="cart-close">×</div>
     <h3 style="margin-bottom:20px; text-align:center;">Carrinho de Compras</h3>
     <div id="cart-items"></div>
     <button id="checkoutBtn">Finalizar Compra</button>
@@ -417,10 +425,11 @@ footer a:hover {
 
 <!-- Rodapé -->
 <footer>
-  <p>&copy; 2024 Loja Futebol Top. Todos os direitos reservados.</p>
+  <p>© 2024 Loja Futebol Top. Todos os direitos reservados.</p>
 </footer>
 
 <script>
+// Dados dos produtos
 const produtos = [
   { id: 1, nome: "Camisola Nike Match", categoria: "camisola", marca: "Nike", preco: 45, imagem: "https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
   { id: 2, nome: "Chuteira Adidas Predator", categoria: "chuteira", marca: "Adidas", preco: 120, imagem: "https://images.unsplash.com/photo-1607785055400-8d36fa4f6a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
@@ -511,7 +520,7 @@ function verificarLogin() {
       verificarLogin();
     };
   } else {
-    authSection.innerHTML = `<button id="loginBtn">Login</button>`;
+    authSection.innerHTML = `<button id="loginBtn">Login / Registrar</button>`;
     document.getElementById('loginBtn').onclick = () => {
       mostrarModalAuth(true);
     };
@@ -568,16 +577,20 @@ authButton.onclick = () => {
       authModal.style.display = 'none';
       verificarLogin();
     } else {
-      alert('Credenciais inválidas.');
+      alert('Credenciais inválidas. Verifique seu usuário e senha.');
     }
   } else {
     // Registrar
     if (usuarios[usuario]) {
-      alert('Usuário já existe.');
+      alert('Este usuário já existe.');
     } else {
+      if (senha.length < 6) {
+        alert('A senha deve ter pelo menos 6 caracteres.');
+        return;
+      }
       usuarios[usuario] = senha;
       localStorage.setItem('usuarios', JSON.stringify(usuarios));
-      alert('Conta criada! Agora faça login.');
+      alert('Conta criada! Faça login para continuar.');
       alternarModoAuth();
     }
   }
@@ -609,7 +622,7 @@ function mostrarCarrinho() {
           <h4>${item.nome}</h4>
           <p>€${item.preco.toFixed(2)}</p>
         </div>
-        <button class="remove-btn" onclick="removerDoCarrinho(${index})">&times;</button>
+        <button class="remove-btn" onclick="removerDoCarrinho(${index})">×</button>
       `;
       container.appendChild(div);
     });
