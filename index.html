@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Loja Futebol Top - Completo e Estiloso</title>
+<title>Loja Futebol Top - Melhorada</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
 
-<!-- Estilos CSS aprimorados -->
+<!-- Estilos CSS -->
 <style>
-  *, *::before, *::after {
+  * {
     box-sizing: border-box;
   }
 
@@ -21,6 +21,72 @@
     color: #333;
   }
 
+  /* Botão menu hambúrguer */
+  #menuHamburguer {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: #222; /* fundo preto */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1100;
+    padding: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background 0.3s;
+  }
+  #menuHamburguer:hover {
+    background-color: #444;
+  }
+  #menuHamburguer div {
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+  }
+
+  /* Menu lateral oculto */
+  #menuLateral {
+    position: fixed;
+    top: 0;
+    left: -250px; /* escondido por padrão */
+    width: 250px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+    padding-top: 60px;
+    transition: left 0.3s ease;
+    z-index: 1099;
+    overflow-y: auto;
+  }
+  #menuLateral.aberto {
+    left: 0;
+  }
+  #menuLateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  #menuLateral li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.2s;
+  }
+  #menuLateral li:hover {
+    background-color: #f9f9f9;
+  }
+  #menuLateral li span {
+    float: right;
+    font-size: 1.2em;
+    color: #999;
+  }
+
   /* Imagem de destaque */
   #destaque {
     width: 100%;
@@ -29,94 +95,19 @@
     display: block;
   }
 
-  /* Ocultar conteúdo principal inicialmente */
+  /* Conteúdo principal com margens ajustadas */
   #conteudoPrincipal {
-    display: none;
-  }
-
-  /* Mostrar conteúdo após carregar */
-  #conteudoPrincipal.show {
-    display: block;
-  }
-
-  /* Menu lateral */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100vh;
-    background-color: #fff;
-    padding: 20px 10px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    overflow-y: auto;
-    z-index: 999;
-    transition: transform 0.3s ease;
-  }
-
-  /* Responsividade menu lateral */
-  @media(max-width: 768px){
-    .sidebar {
-      position: fixed;
-      transform: translateX(-250px);
-    }
-    .sidebar.active {
-      transform: translateX(0);
-    }
-  }
-
-  /* Botão para abrir menu mobile */
-  #menuToggle {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    background-color: #ff416c;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1em;
-    z-index: 1001;
-    display: none;
-  }
-  @media(max-width: 768px){
-    #menuToggle {
-      display: block;
-    }
-  }
-
-  /* Itens do menu lateral */
-  .menu-item {
-    padding: 12px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 16px;
-    color: #333;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-    margin-bottom: 10px;
-  }
-  .menu-item:hover {
-    background-color: #f9f9f9;
-  }
-  .icon {
-    font-size: 14px;
-    color: #999;
-  }
-
-  /* Conteúdo principal */
-  .main-content {
-    margin-left: 250px;
+    display: none; /* inicialmente escondido */
+    margin-left: 0;
     padding: 20px;
     transition: margin-left 0.3s ease;
   }
-  @media(max-width: 768px){
-    .main-content {
-      margin-left: 0;
-      padding-top: 60px;
+  #conteudoPrincipal.show {
+    display: block;
+  }
+  @media(min-width: 769px){
+    #conteudoPrincipal {
+      margin-left: 250px;
     }
   }
 
@@ -127,20 +118,20 @@
     width: 100%;
     background: linear-gradient(90deg, #ff416c, #ff4b2b);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 15px 30px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     z-index: 1000;
-    flex-wrap: wrap;
   }
   .navbar h1 {
-    color: #fff;
-    font-size: 2em;
     margin: 0;
+    font-size: 2em;
+    color: #fff;
     letter-spacing: 2px;
   }
   #auth-section {
+    margin-left: auto;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -153,30 +144,20 @@
     font-weight: 600;
     font-size: 1em;
     transition: all 0.3s ease;
-  }
-  #loginBtn {
     background-color: #ff6f61;
     color: #fff;
   }
-  #loginBtn:hover {
+  #auth-section button:hover {
     background-color: #ff3b2e;
     transform: scale(1.05);
   }
-  #logoutBtn {
-    background-color: #4CAF50;
-    color: #fff;
-  }
-  #logoutBtn:hover {
-    background-color: #388e3c;
-    transform: scale(1.05);
-  }
 
-  /* Espaço para o menu do topo */
+  /* Espaço para o cabeçalho fixo */
   .spacer {
     height: 80px;
   }
 
-  /* Seções */
+  /* Seções e títulos */
 section {
   padding: 80px 20px;
   max-width: 1600px;
@@ -206,7 +187,6 @@ h2 {
   font-size: 1em;
   min-width: 220px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 .filters select:focus, .filters input:focus {
   outline: none;
@@ -410,6 +390,8 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+/* Animação fadeIn */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -418,32 +400,38 @@ footer a:hover {
 </head>
 <body>
 
-<!-- Botão para abrir menu lateral em telas menores -->
-<button id="menuToggle">☰ Menu</button>
+<!-- Botão menu hamburguer com fundo preto -->
+<div id="menuHamburguer" title="Menu">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
 
-<!-- Imagem de destaque -->
+<!-- Menu lateral escondido -->
+<div id="menuLateral">
+  <ul>
+    <li>Página Inicial</li>
+    <li>Entrega em 48 Horas <span>&rarr;</span></li>
+    <li>Homem <span>&rarr;</span></li>
+    <li>Mulher <span>&rarr;</span></li>
+    <li>Kits de Criança <span>&rarr;</span></li>
+    <li>Bebês <span>&rarr;</span></li>
+    <li>Fatos de Treino <span>&rarr;</span></li>
+    <li>Casacos & Corta-Ventos & Sweats <span>&rarr;</span></li>
+    <li>Acessórios <span>&rarr;</span></li>
+    <li>Bolas de Futebol <span>&rarr;</span></li>
+    <li>Seguir a Minha Encomenda <span>&rarr;</span></li>
+    <li>Feedbacks de Clientes <span>&rarr;</span></li>
+  </ul>
+</div>
+
+<!-- Imagem de destaque escura -->
 <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" id="destaque" />
 
 <!-- Conteúdo principal escondido inicialmente -->
 <div id="conteudoPrincipal">
 
-  <!-- Menu lateral -->
-  <div class="sidebar" id="sidebar">
-    <div class="menu-item">Página Inicial <span class="icon">→</span></div>
-    <div class="menu-item">Entrega em 48 Horas <span class="icon">→</span></div>
-    <div class="menu-item">Homem <span class="icon">→</span></div>
-    <div class="menu-item">Mulher <span class="icon">→</span></div>
-    <div class="menu-item">Kits de Criança <span class="icon">→</span></div>
-    <div class="menu-item">Bebês <span class="icon">→</span></div>
-    <div class="menu-item">Fatos de Treino <span class="icon">→</span></div>
-    <div class="menu-item">Casacos & Corta-Ventos & Sweats <span class="icon">→</span></div>
-    <div class="menu-item">Acessórios <span class="icon">→</span></div>
-    <div class="menu-item">Bolas de Futebol <span class="icon">→</span></div>
-    <div class="menu-item">Seguir a Minha Encomenda <span class="icon">→</span></div>
-    <div class="menu-item">Feedbacks de Clientes <span class="icon">→</span></div>
-  </div>
-
-  <!-- Menu fixo superior -->
+  <!-- Navbar fixa -->
   <div class="navbar">
     <h1>Loja Futebol Top</h1>
     <div id="auth-section">
@@ -518,6 +506,7 @@ footer a:hover {
   </div>
 </div>
 
+<!-- Scripts -->
 <script>
   // Variáveis globais
   const produtos = [
@@ -537,22 +526,28 @@ footer a:hover {
   document.addEventListener("DOMContentLoaded", () => {
     const destaque = document.getElementById('destaque');
     const conteudo = document.getElementById('conteudoPrincipal');
+    const menuLateral = document.getElementById('menuLateral');
 
     // Função para esconder destaque e mostrar conteúdo
     function mostrarConteudo() {
       destaque.style.display = 'none';
-      document.getElementById('conteudoPrincipal').classList.add('show');
+      conteudo.style.display = 'block';
     }
 
-    // Executa após carregamento
+    // Exibir conteúdo após carregamento
     mostrarConteudo();
+
+    // Menu hambúrguer
+    const menuBtn = document.getElementById('menuHamburguer');
+    menuBtn.onclick = () => {
+      document.getElementById('menuLateral').classList.toggle('aberto');
+    };
 
     // Filtros
     const filtroCategoria = document.getElementById('categoryFilter');
     const filtroMarca = document.getElementById('brandFilter');
     const buscaTexto = document.getElementById('searchInput');
 
-    // Elementos de controle
     const containerProdutos = document.getElementById('productsContainer');
     const authSection = document.getElementById('auth-section');
 
@@ -567,7 +562,6 @@ footer a:hover {
 
     let modoAuth = true; // login ou registrar
 
-    // Atualiza a exibição do login/logout
     function verificarLogin() {
       const usuario = localStorage.getItem('user');
       if (usuario) {
@@ -587,7 +581,6 @@ footer a:hover {
       }
     }
 
-    // Modal login/registro
     function mostrarModalAuth(isLogin) {
       modoAuth = isLogin;
       document.getElementById('auth-title').textContent = isLogin ? 'Login' : 'Registrar-se';
@@ -624,7 +617,7 @@ footer a:hover {
       let usuarios = JSON.parse(localStorage.getItem('usuarios')) || {};
 
       if (modoAuth) {
-        // Login
+        // login
         if (usuarios[usuario] && usuarios[usuario] === senha) {
           localStorage.setItem('user', usuario);
           alert('Login bem-sucedido!');
@@ -634,7 +627,7 @@ footer a:hover {
           alert('Credenciais inválidas.');
         }
       } else {
-        // Registrar
+        // registrar
         if (usuarios[usuario]) {
           alert('Este usuário já existe.');
         } else {
@@ -710,7 +703,7 @@ footer a:hover {
     document.getElementById('brandFilter').addEventListener('change', mostrarProdutos);
     document.getElementById('searchInput').addEventListener('input', mostrarProdutos);
 
-    // Função para mostrar produtos filtrados
+    // Mostrar produtos filtrados
     function mostrarProdutos() {
       const container = document.getElementById('productsContainer');
       container.innerHTML = '';
@@ -746,15 +739,16 @@ footer a:hover {
       });
     }
 
-    // Verifica login ao carregar
+    // Inicializa
     verificarLogin();
     mostrarProdutos();
 
-    // Controle menu mobile
-    document.getElementById('menuToggle').onclick = () => {
-      document.getElementById('sidebar').classList.toggle('active');
+    // Controle do menu lateral ao clicar no ícone
+    document.getElementById('menuHamburguer').onclick = () => {
+      document.getElementById('menuLateral').classList.toggle('aberto');
     };
   });
 </script>
+
 </body>
 </html>
