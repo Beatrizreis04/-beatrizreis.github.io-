@@ -6,9 +6,8 @@
 <title>Loja Futebol Top - Melhorada</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
 
-<!-- Estilos CSS -->
 <style>
   * {
     box-sizing: border-box;
@@ -21,14 +20,37 @@
     color: #333;
   }
 
-  /* Botão menu hamburguer */
+  /* Cabeçalho com nome da loja */
+  .header-top {
+    width: 100%;
+    padding: 20px 40px;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header-top h1 {
+    margin: 0;
+    font-size: 2.8em;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  /* Botão menu com fundo preto, mais centralizado */
   #menuHamburguer {
     position: fixed;
-    top: 25%; /* mais para baixo */
-    left: 15px;
+    top: calc(20% + 20px); /* mais para baixo, ajustando para ficar mais harmonioso */
+    left: 20px;
     width: 50px;
     height: 50px;
-    background-color: #222; /* fundo preto */
+    background-color: #222;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -50,16 +72,16 @@
     background-color: #fff;
   }
 
-  /* Menu lateral oculto */
+  /* Menu lateral escondido */
   #menuLateral {
     position: fixed;
     top: 0;
-    left: -250px; /* escondido por padrão */
+    left: -250px;
     width: 250px;
     height: 100%;
     background-color: #fff;
     box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-    padding-top: 60px;
+    padding-top: 80px;
     transition: left 0.3s ease;
     z-index: 1099;
     overflow-y: auto;
@@ -88,76 +110,44 @@
     color: #999;
   }
 
-  /* Cabeçalho estilizado */
-.header-top {
-    width: 100%;
-    padding: 15px 20px;
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-  }
-.header-top h1 {
-    margin: 0;
-    font-size: 2.5em;
-    color: #fff;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-}
-
-#auth-section {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Espaço para evitar sobreposição do conteúdo com o cabeçalho fixo */
-.spacer {
-    height: 100px; /* mais espaço para o cabeçalho maior */
-}
-
-/* Imagem de destaque */
-#destaque {
+  /* Imagem destaque com sombra mais suave */
+  #destaque {
     width: 100%;
     max-height: 300px;
     object-fit: cover;
     display: block;
-    margin-top: 0; /* já ajustado pelo spacer */
-}
+    margin-top: 80px; /* espaço para o cabeçalho fixo */
+    filter: brightness(0.7);
+  }
 
-/* Conteúdo principal com margens ajustadas */
-#conteudoPrincipal {
-    display: none; /* inicialmente escondido */
-    margin-left: 0;
+  /* Conteúdo principal */
+  #conteudoPrincipal {
+    display: none; /* escondido inicialmente */
     padding: 20px;
-    transition: margin-left 0.3s ease;
-}
-#conteudoPrincipal.show {
+    margin-top: 20px;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #conteudoPrincipal.show {
     display: block;
-}
-@media(min-width: 769px){
+  }
+  @media(min-width: 769px){
     #conteudoPrincipal {
-        margin-left: 250px;
+      margin-left: 250px;
     }
-}
+  }
 
-/* Seções e títulos */
+  /* Seções e títulos */
 section {
   padding: 80px 20px;
-  max-width: 1600px;
-  margin: auto;
 }
 h2 {
   text-align: center;
   margin-bottom: 50px;
-  font-size: 3em;
+  font-size: 2.8em;
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
 /* Filtros */
@@ -208,10 +198,6 @@ h2 {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  transition: transform 0.3s;
-}
-.product-image:hover {
-  transform: scale(1.02);
 }
 .product-info {
   padding: 20px;
@@ -266,8 +252,8 @@ h2 {
   max-width: 600px;
   width: 100%;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  animation: fadeIn 0.4s ease;
   position: relative;
+  animation: fadeIn 0.4s ease;
 }
 #auth-close, #cart-close {
   position: absolute;
@@ -280,7 +266,6 @@ h2 {
 }
 #auth-close:hover, #cart-close:hover {
   color: #222;
-  transform: scale(1.1);
 }
 h3 {
   margin-bottom: 30px;
@@ -295,8 +280,6 @@ input[type=text], input[type=password] {
   margin-bottom: 25px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1em;
 }
 button {
   width: 100%;
@@ -385,7 +368,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Animação de fadeIn */
+/* Animação fadeIn */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -394,22 +377,19 @@ footer a:hover {
 </head>
 <body>
 
-<!-- Barra superior com o nome da loja -->
+<!-- Barra superior com nome da loja -->
 <div class="header-top">
   <h1>Loja Futebol Top</h1>
-  <div id="auth-section">
-    <button id="loginBtn">Login / Registrar</button>
-  </div>
 </div>
 
-<!-- Botão menu com fundo preto, mais para baixo -->
+<!-- Botão menu mais centralizado e mais para baixo -->
 <div id="menuHamburguer" title="Menu">
   <div></div>
   <div></div>
   <div></div>
 </div>
 
-<!-- Menu lateral escondido -->
+<!-- Menu lateral oculto -->
 <div id="menuLateral">
   <ul>
     <li>Página Inicial</li>
@@ -427,7 +407,7 @@ footer a:hover {
   </ul>
 </div>
 
-<!-- Imagem inicial escura -->
+<!-- Imagem de destaque -->
 <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" id="destaque" />
 
 <!-- Conteúdo principal escondido inicialmente -->
@@ -498,7 +478,6 @@ footer a:hover {
   </div>
 </div>
 
-<!-- Scripts -->
 <script>
   // Variáveis globais
   const produtos = [
@@ -514,48 +493,29 @@ footer a:hover {
 
   let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-  // Quando a página carregar
   document.addEventListener("DOMContentLoaded", () => {
     const destaque = document.getElementById('destaque');
     const conteudo = document.getElementById('conteudoPrincipal');
-    const menuLateral = document.getElementById('menuLateral');
 
     // Mostrar conteúdo
-    function mostrarConteudo() {
-      destaque.style.display = 'none';
-      conteudo.style.display = 'block';
-    }
-    mostrarConteudo();
+    destaque.style.display = 'none'; 
+    conteudo.classList.add('show');
 
-    // Atualmente o menu lateral
-    const menuBtn = document.getElementById('menuHamburguer');
-    menuBtn.onclick = () => {
+    // Menu lateral
+    document.getElementById('menuHamburguer').onclick = () => {
       document.getElementById('menuLateral').classList.toggle('aberto');
     };
 
-    // Filtros e busca
-    const filtroCategoria = document.getElementById('categoryFilter');
-    const filtroMarca = document.getElementById('brandFilter');
-    const buscaTexto = document.getElementById('searchInput');
-    const containerProdutos = document.getElementById('productsContainer');
+    // Login/Registrar
     const authSection = document.getElementById('auth-section');
-
-    // Modal
     const authModal = document.getElementById('auth-modal');
     const authClose = document.getElementById('auth-close');
-    const authTitle = document.getElementById('auth-title');
-    const authUsername = document.getElementById('auth-username');
-    const authPassword = document.getElementById('auth-password');
-    const authButton = document.getElementById('auth-submit');
-    const authSwitchLink = document.getElementById('switchAuth');
-
-    let modoAuth = true; // login ou registrar
 
     function verificarLogin() {
-      const usuario = localStorage.getItem('user');
-      if (usuario) {
+      const user = localStorage.getItem('user');
+      if (user) {
         authSection.innerHTML = `
-          <span style="color:#fff; font-weight:600;">Olá, ${usuario}!</span>
+          <span style="color:#fff; font-weight:600;">Olá, ${user}!</span>
           <button id="logoutBtn">Logout</button>
         `;
         document.getElementById('logoutBtn').onclick = () => {
@@ -571,18 +531,16 @@ footer a:hover {
     }
 
     function mostrarModalAuth(isLogin) {
-      modoAuth = isLogin;
       document.getElementById('auth-title').textContent = isLogin ? 'Login' : 'Registrar-se';
       document.getElementById('auth-username').value = '';
       document.getElementById('auth-password').value = '';
-
       authSwitchLink.innerHTML = isLogin ? 'Ainda não tem conta? <a href="#" id="switchAuth">Registrar-se</a>' : 'Já possui conta? <a href="#" id="switchAuth">Entrar</a>';
-
+      
       document.getElementById('switchAuth').onclick = (e) => {
         e.preventDefault();
         alternarModoAuth();
       };
-
+      
       document.getElementById('auth-modal').style.display = 'flex';
     }
 
@@ -590,6 +548,7 @@ footer a:hover {
       document.getElementById('auth-modal').style.display = 'none';
     };
 
+    let modoAuth = true; // true = login, false = registrar
     function alternarModoAuth() {
       mostrarModalAuth(!modoAuth);
     }
@@ -606,7 +565,7 @@ footer a:hover {
       let usuarios = JSON.parse(localStorage.getItem('usuarios')) || {};
 
       if (modoAuth) {
-        // login
+        // Login
         if (usuarios[usuario] && usuarios[usuario] === senha) {
           localStorage.setItem('user', usuario);
           alert('Login bem-sucedido!');
@@ -616,7 +575,7 @@ footer a:hover {
           alert('Credenciais inválidas.');
         }
       } else {
-        // registrar
+        // Registrar
         if (usuarios[usuario]) {
           alert('Este usuário já existe.');
         } else {
@@ -728,20 +687,14 @@ footer a:hover {
       });
     }
 
-    // Inicializa
+    // Inicializar
     verificarLogin();
     mostrarProdutos();
 
-    // Controle do menu lateral ao clicar no ícone
+    // Evento do menu lateral
     document.getElementById('menuHamburguer').onclick = () => {
       document.getElementById('menuLateral').classList.toggle('aberto');
     };
-
-    // Mostrar conteúdo ao carregar
-    const destaque = document.getElementById('destaque');
-    const conteudo = document.getElementById('conteudoPrincipal');
-    destaque.style.display = 'none';
-    conteudo.style.display = 'block';
   });
 </script>
 
